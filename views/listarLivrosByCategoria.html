@@ -1,0 +1,11 @@
+<div ng-controller="MainController">
+	<navbarheader></navbarheader>
+</div>
+
+<div ng-controller="LivroController">
+	<ul ng-init="LivroController.listarLivrosByCategoria()">
+		<li ng-repeat="livro in livrosByCategoriaLista ">
+		  <a href="#/listar/livro/{{livro}}">{{livro}}</a>
+		</li>
+	</ul>
+</div>

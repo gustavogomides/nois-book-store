@@ -1,0 +1,33 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav">
+        <li class="active"><a href="#/"><span class="icon-home"></span> Home</a></li>
+         <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown"><span class="icon-th-list"></span> Categorias
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="categoria in categoriasTeste">
+              <a href="#/listar/{{categoria.CategoryName}}">{{categoria.CategoryName}}</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#/"> <span class="icon-user"></span> Minha Conta</a>
+        </li>
+        <li><a href="#/"><span class="badge badge-important">3</span> <span class="icon-shopping-cart"></span> Carrinho</a></li>
+        <li><a href="#/"><span class="icon-book"></span> Sobre Nos</a></li>
+        <li><a href="#/"><span class="icon-bullhorn"></span> Fale Conosco</a></li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<form class="form-search offset1">
+  <div class="input-append">
+    <input type="text" class="search-query input-xxlarge" placeholder="Procure por algum livro em nossa loja...">
+    <button type="submit" class="btn btn-primary">Buscar Livro</button>
+  </div>
+</form>

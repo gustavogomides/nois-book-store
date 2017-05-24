@@ -1,0 +1,23 @@
+<div ng-controller="MainController">
+	<navbarheader></navbarheader>
+</div>
+
+<div ng-controller="LivroController">
+	<div ng-init="LivroController.getLivro()">
+		<a href="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.ISBN}}.01.LZZZZZZZ.jpg">
+			<img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.ISBN}}.01.MZZZZZZZ.jpg"
+			 alt="Capa do livro {{livro.title}}">
+		</a>
+		<h4>Título:</h4> </p>{{livro.title}}</p>
+		<h4>ISBN:</h4> </p>{{livro.ISBN}}</p>
+		<h4>Descrição:</h4><p ng-bind-html="livro.description"></p>
+		<h4>Preço:</h4> </p>{{livro.price | currency:"R$" }}</p>
+		<h4>Editora:</h4> </p>{{livro.publisher}}</p>
+		<h4>Data Publicação:</h4> </p>{{livro.pubdate}}</p>
+		<h4>Edição:</h4> </p>{{livro.edition}}</p>
+		<h4>Páginas:</h4> </p>{{livro.pages}}</p>
+	</div>
+</div>
+
+
+
