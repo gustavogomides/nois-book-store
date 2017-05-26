@@ -14,7 +14,7 @@
 		vm.getLivro = getLivro;
 		vm.listLivro = listLivro;
 
-
+		
 		/// listar livros por categoria
 		function listarLivrosByCategoria(){
 			MainService.getLivroByCategoria($routeParams.categoria, listarCategoriasSuccessCallback, listarCategoriasErrorCallback);
