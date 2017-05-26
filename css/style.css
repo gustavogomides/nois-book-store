@@ -155,3 +155,13 @@ body>.container {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
+.dl-horizontal dt {
+  text-align: left;
+  width: auto;
+  padding-right: 1em;
+}
+
+.dl-horizontal dd {
+  margin-left: 0;
+}

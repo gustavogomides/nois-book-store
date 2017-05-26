@@ -12,13 +12,13 @@
           </a>
           <div class="caption">
             <h5>
-              <a href="#/listar/livro/{{livro.title}}">{{livro.title}}</a>
+              <a href="#/listar/livro/{{livro.title}}">{{livro.title | limitTo:35}}...</a>
             </h5>
-            <h6>descrição</h6>
-            <h6>{{livro.price | currency:"R$"}}</h6>
+            <p ng-bind-html="livro.description | limitTo: 120"></p>
+            <p><b>Preço:</b> {{livro.price | currency:"R$"}}</p>
              <p>
-              <a href="#/" class="btn btn-primary">Adicionar ao Carrinho</a> 
-              <a href="#/listar/livro/{{livro.title}}" class="btn">Ver Detalhes</a>
+              <a href="#/" class="btn btn-danger">Adicionar ao Carrinho</a> 
+              <a href="#/listar/livro/{{livro.title}}" class="btn btn-info">Ver Detalhes</a>
             </p>
           </div>
         </div>
