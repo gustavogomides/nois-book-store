@@ -146,8 +146,9 @@ body>.container {
   font-size: 22px;
 }
 
-.form-search button {
-  min-height: 50px;
+.form-search a {
+  padding-top: 15px;
+  min-height: 29px;
   font-size: 22px;
 }
 

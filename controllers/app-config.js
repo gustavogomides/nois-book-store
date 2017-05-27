@@ -19,6 +19,10 @@
 			templateUrl: '././views/livro-descricao.html',
 			controller: 'LivroController as LivroController'
 		});
+		$routeProvider.when('/search/:search', {
+			templateUrl: '././views/buscarLivros.html',
+			controller: 'LivroController as LivroController'
+		});
 	}
 
 })();

@@ -13,7 +13,7 @@
 		vm.listarLivrosByCategoria = listarLivrosByCategoria;
 		vm.getLivro = getLivro;
 		vm.listLivro = listLivro;
-
+		vm.searchBooks = searchBooks;
 		
 		/// listar livros por categoria
 		function listarLivrosByCategoria(){
@@ -51,6 +51,19 @@
 		}
 
 		function listLivroErrorCallback(){
+			console.log("Unable to read record.");
+		}
+
+		// search books
+		function searchBooks(){
+			MainService.searchBooks($routeParams.search, searchBooksSuccessCallback, searchBooksErrorCallback)
+		}
+
+		function searchBooksSuccessCallback(data){
+			$scope.livrosEncontrados = data.search;			
+		}
+
+		function searchBooksErrorCallback(){
 			console.log("Unable to read record.");
 		}
 

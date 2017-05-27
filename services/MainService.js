@@ -10,6 +10,7 @@
 		vm.getList = getList;
 		vm.getLivroByCategoria = getLivroByCategoria;
 		vm.getLivro = getLivro;
+		vm.searchBooks = searchBooks;
 
 		function getList(url, successCallback, errorCallback){
 			$http.get('http://localhost/api-nois-book-store/' + url + "/list")
@@ -46,6 +47,19 @@
 	            	}
             	);
 		}
+
+		function searchBooks(query, successCallback, errorCallback){
+			$http.get('http://localhost/api-nois-book-store/search/' + query)
+				.then(
+		            function(response) {
+		                successCallback && successCallback(response.data);	                
+		            },
+		            function(error){
+		                errorCallback && errorCallback(error);
+	            	}
+            	);
+		}
+
 
 	}
 

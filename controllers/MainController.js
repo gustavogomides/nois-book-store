@@ -11,6 +11,7 @@
 		$scope.controller = vm;
 
 		$scope.categoriasTeste = [];
+		$scope.searchQuery = '';
 
 		list();
 

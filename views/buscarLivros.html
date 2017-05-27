@@ -3,14 +3,14 @@
 </div>
 
 <div ng-controller="LivroController">
-	<span ng-init="LivroController.listarLivrosByCategoria()">
+	<span ng-init="LivroController.searchBooks()">
 		<div class="row-fluid">
 			<ul class="thumbnails">
-				<li class="span4" ng-repeat="livro in livrosByCategoriaLista">
+				<li class="span4" ng-repeat="livro in livrosEncontrados">
 					<div class="thumbnail">
 						<img alt="230x200" src="http://placehold.it/230x200">
 						<div class="caption">
-							<h3>{{livro.title}}</h3>
+							<h4>{{livro.title}}</h4>
 				            <p ng-bind-html="livro.description | limitTo: 120"></p>
 							<p><a href="#" class="btn btn-danger">Adicionar ao Carrinho</a> <a href="#/listar/livro/{{livro.title}}" class="btn btn-info">Ver Detalhes</a></p>
 						</div>
