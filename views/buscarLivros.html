@@ -8,9 +8,13 @@
 			<ul class="thumbnails">
 				<li class="span4" ng-repeat="livro in livrosEncontrados">
 					<div class="thumbnail">
-						<img alt="230x200" src="http://placehold.it/230x200">
-						<div class="caption">
-							<h4>{{livro.title}}</h4>
+						<a href="#/listar/livro/{{livro.title}}">
+				            <img alt="300x200" src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.isbn}}.01.THUMBZZZ.jpg"
+				              alt="Capa do Livro {{livro.title}}">
+				        </a>						<div class="caption">
+							<h5>
+				              <a href="#/listar/livro/{{livro.title}}">{{livro.title | limitTo:35}}...</a>
+				            </h5>
 				            <p ng-bind-html="livro.description | limitTo: 120"></p>
 							<p><a href="#" class="btn btn-danger">Adicionar ao Carrinho</a> <a href="#/listar/livro/{{livro.title}}" class="btn btn-info">Ver Detalhes</a></p>
 						</div>
