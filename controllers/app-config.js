@@ -23,6 +23,10 @@
 			templateUrl: '././views/buscarLivros.html',
 			controller: 'LivroController as LivroController'
 		});
+		$routeProvider.when('/shopping', {
+			templateUrl: '././views/shoppingCart.html',
+			controller: 'LivroController as LivroController'
+		});
 	}
 
 })();
