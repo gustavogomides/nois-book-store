@@ -1,69 +1,85 @@
-(function(){
+(function () {
 	'use strict';
 
 	angular.module('app')
 		.controller('LivroController', LivroController);
-	
+
 	LivroController.$inject = ['$scope', '$routeParams', 'MainService'];
 
-	function LivroController($scope, $routeParams, MainService){
+	function LivroController($scope, $routeParams, MainService) {
 		var vm = this;
 		$scope.controller = vm;
-		
+
 		vm.listarLivrosByCategoria = listarLivrosByCategoria;
 		vm.getLivro = getLivro;
 		vm.listLivro = listLivro;
 		vm.searchBooks = searchBooks;
-		
+		vm.getCarrinho = getCarrinho;
+		vm.atualizaQuantidade = atualizaQuantidade;
+
 		/// listar livros por categoria
-		function listarLivrosByCategoria(){
+		function listarLivrosByCategoria() {
 			MainService.getLivroByCategoria($routeParams.categoria, listarCategoriasSuccessCallback, listarCategoriasErrorCallback);
 		}
 
-		function listarCategoriasSuccessCallback(data){
+		function listarCategoriasSuccessCallback(data) {
 			$scope.livrosByCategoriaLista = data.livros;
 		}
 
-		function listarCategoriasErrorCallback(){
+		function listarCategoriasErrorCallback() {
 			console.log("Unable to read record.");
 		}
 
 		/// get livro
-		function getLivro(){
+		function getLivro() {
 			MainService.getLivro($routeParams.nome, getLivroSuccessCallback, getLivroErrorCallback);
 		}
 
-		function getLivroSuccessCallback(data){
+		function getLivroSuccessCallback(data) {
 			$scope.livro = data;
 		}
 
-		function getLivroErrorCallback(){
+		function getLivroErrorCallback() {
 			console.log("Unable to read record.");
 		}
 
 		// listar livros
-		function listLivro(){
+		function listLivro() {
 			MainService.getList('livro', listLivroSuccessCallback, listLivroErrorCallback);
 		}
 
-		function listLivroSuccessCallback(data){
+		function listLivroSuccessCallback(data) {
 			$scope.livrosInicio = getUnique(data.livros, 3);
 		}
 
-		function listLivroErrorCallback(){
+		function listLivroErrorCallback() {
 			console.log("Unable to read record.");
 		}
 
 		// search books
-		function searchBooks(){
+		function searchBooks() {
 			MainService.searchBooks($routeParams.search, searchBooksSuccessCallback, searchBooksErrorCallback)
 		}
 
-		function searchBooksSuccessCallback(data){
-			$scope.livrosEncontrados = data.search;			
+		function searchBooksSuccessCallback(data) {
+			$scope.livrosEncontrados = data.search;
 		}
 
-		function searchBooksErrorCallback(){
+		function searchBooksErrorCallback() {
+			console.log("Unable to read record.");
+		}
+
+		/// Adiciona livros ao carrinho
+		function getCarrinho() {
+			MainService.shoppingCart($routeParams.isbn, successCallback, errorCallback);
+		}
+
+		function successCallback(data) {
+			console.log(data);
+			$scope.cart = data;
+		}
+
+		function errorCallback() {
 			console.log("Unable to read record.");
 		}
 
@@ -78,7 +94,16 @@
 				// Since we are only removing one element
 				ret.push(removed[0]);
 			}
-			return ret;  
+			return ret;
+		}
+
+		function atualizaQuantidade(isbn, add){
+			if(add)
+				isbn = "add"+isbn;
+			else
+				isbn = "rem"+isbn;
+
+			MainService.shoppingCart(isbn, successCallback, errorCallback);
 		}
 	}
 

@@ -19,7 +19,7 @@
 				            <p ng-bind-html="livro.description | limitTo: 120"></p>
 				            <p><b>Preço:</b> {{livro.price | currency:"R$"}}</p>
 											
-							<p><a href="#/shopping"  class="btn btn-danger">Adicionar ao Carrinho</a> <a href="#/listar/livro/{{livro.title}}" class="btn btn-info">Ver Detalhes</a></p>
+							<p><a href="#/shopping/add{{livro.ISBN}}"  class="btn btn-danger">Adicionar ao Carrinho</a> <a href="#/listar/livro/{{livro.title}}" class="btn btn-info">Ver Detalhes</a></p>
 						</div>
 					</div>
 				</li>
