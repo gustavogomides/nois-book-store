@@ -1,0 +1,36 @@
+<div ng-controller="MainController">
+    <navbarheader></navbarheader>
+</div>
+<div ng-controller="LivroController">
+    <div class="row-fluid">
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Sua Conta</div>
+                <div class="pull-right">
+                    <span class="badge badge-warning">Você possuí 2 itens em seu carrinho</span>
+                </div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                    <div class="alert alert-info text-center">Entre com seu endereço de email</div>
+                    <div class="offset2">
+                        <form class="form-horizontal" action="#/checkout02">
+                            <div class="control-group">
+                                <label class="control-label" for="email">Email</label>
+                                <div class="controls">
+                                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required id="email" placeholder="Informe seu Email"
+                                        ng-style="{'width': '275px'}">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button type="submit" href="#/checkout02" class="btn btn-primary offset2">Prosseguir para Checkout</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

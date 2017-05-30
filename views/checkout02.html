@@ -1,0 +1,80 @@
+<div ng-controller="MainController">
+    <navbarheader></navbarheader>
+</div>
+<div ng-controller="LivroController">
+    <div class="row-fluid">
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Informações de Envio</div>
+                <div class="pull-right">
+                    <span class="badge badge-warning">Você possuí 2 itens em seu carrinho</span>
+                </div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                    <div class="alert alert-info text-center">Por favor, insira seu endereço de envio!</div>
+                    <div class="offset2">
+                        <form class="form-horizontal" action="#/checkout03">
+                            <div class="control-group">
+                                <label class="control-label" for="email">Email</label>
+                                <div class="controls">
+                                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required id="email" placeholder="Informe seu Email"
+                                        ng-style="{'width': '275px'}">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="nome">Nome</label>
+                                <div class="controls">
+                                    <input type="text" required id="nome" placeholder="Informe seu Nome" maxlength="20" pattern="[A-Za-z'-]{2,20}" ng-style="{'width': '275px'}">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="sobrenome">Sobrenome</label>
+                                <div class="controls">
+                                    <input type="text" required id="sobrenome" maxlength="20" pattern="[A-Za-z'-]{2,20}" placeholder="Informe seu Sobrenome"
+                                        ng-style="{'width': '275px'}">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="rua">Rua</label>
+                                <div class="controls">
+                                    <input type="text" required id="rua" placeholder="Informe sua Rua" ng-style="{'width': '275px'}">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="cidade">Cidade</label>
+                                <div class="controls">
+                                    <input type="text" maxlength="30" pattern="[A-Za-z'-]{2,30}" required id="cidade" placeholder="Informe sua Cidade" ng-style="{'width': '275px'}">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="estado">Estado</label>
+                                <div class="controls">
+                                    <input type="text" required id="estado" length="2" pattern="[A-Za-z]{2}" placeholder="Informe seu Estado" ng-style="{'width': '130px'}">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="cep">CEP</label>
+                                <div class="controls">
+                                    <input type="number" maxlength="10" pattern="[0-9]{10}" required id="cep" placeholder="Informe seu CEP" ng-style="{'width': '130px'}">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button type="submit" class="btn btn-primary offset3">Processar Pedido</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

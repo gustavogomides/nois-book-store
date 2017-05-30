@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
 	'use strict',
 
@@ -29,6 +29,18 @@
 		});
 		$routeProvider.when('/shopping/', {
 			templateUrl: '././views/shoppingCart.html',
+			controller: 'LivroController as LivroController'
+		});
+		$routeProvider.when('/checkout01/', {
+			templateUrl: '././views/checkout01.html',
+			controller: 'LivroController as LivroController'
+		});
+		$routeProvider.when('/checkout02/', {
+			templateUrl: '././views/checkout02.html',
+			controller: 'LivroController as LivroController'
+		});
+		$routeProvider.when('/checkout03/', {
+			templateUrl: '././views/checkout03.html',
 			controller: 'LivroController as LivroController'
 		});
 	}
