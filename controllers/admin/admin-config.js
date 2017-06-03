@@ -11,6 +11,10 @@
 			templateUrl: '././views/admin/login.html',
 			controller: 'LoginController as LoginController'
 		});
+		$routeProvider.when('/dashboard', {
+			templateUrl: '././views/admin/index.html',
+			controller: 'LoginController as LoginController'
+		});
 		
 	}
 
