@@ -43,6 +43,10 @@
 			templateUrl: '././views/checkout03.html',
 			controller: 'LivroController as LivroController'
 		});
+		$routeProvider.when('/admin/', {
+			templateUrl: '././views/admin/login.html',
+			controller: 'LoginController as LoginController'
+		});
 	}
 
 })();
