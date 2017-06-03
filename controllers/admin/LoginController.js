@@ -1,14 +1,14 @@
 (function () {
     'use strict';
 
-    angular.module('app')
+    angular.module('admin')
         .controller('LoginController', LoginController);
 
     LoginController.$inject = ['$scope', '$routeParams', 'MainService'];
 
-    function ShoppingCartController($scope, $routeParams, MainService) {
+    function LoginController($scope, $routeParams, MainService) {
         var vm = this;
-        $scope.controller = vm;
+        $scope.loginController = vm;
     }
 
 
