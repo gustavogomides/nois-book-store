@@ -28,7 +28,6 @@
 		}
 
 		function onClickLogin(path){
-			console.log(path);
 			// $location.url(path);
 			window.location.href = 'http://localhost' + '/nois-book-store/' + path;
 		}

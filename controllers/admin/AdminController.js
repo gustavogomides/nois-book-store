@@ -1,26 +1,26 @@
 (function () {
-    'use strict';
+	'use strict';
 
-    var app = angular.module('admin');
-    app.controller('AdminController', AdminController);
+	var app = angular.module('admin');
+	app.controller('AdminController', AdminController);
 
-    AdminController.$inject = ['$scope', '$routeParams', 'AdminService'];
+	AdminController.$inject = ['$scope', '$routeParams', 'AdminService', '$location'];
 
-    function AdminController($scope, $routeParams, AdminService) {
-        var vm = this;
-        $scope.adminController = vm;
+	function AdminController($scope, $routeParams, AdminService, $location) {
+		var vm = this;
+		$scope.adminController = vm;
 
-        vm.listarLivros = listarLivros;
-        vm.listarAutores = listarAutores;
-        vm.listarCategorias = listarCategorias;        
-        vm.addCategoria = addCategoria;
-        vm.addAutor = addAutor;
-        vm.addLivro = addLivro;
-        vm.remove = remove;
+		vm.listarLivros = listarLivros;
+		vm.listarAutores = listarAutores;
+		vm.listarCategorias = listarCategorias;
+		vm.addCategoria = addCategoria;
+		vm.addAutor = addAutor;
+		vm.addLivro = addLivro;
+		vm.remove = remove;
 
-        ////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////
-        /// listar livros
+		////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////
+		/// listar livros
 		function listarLivros() {
 			AdminService.getSomething('livro', listarLivrosSuccessCallback, errorCallback);
 		}
@@ -29,7 +29,7 @@
 			$scope.listaDeLivros = data.livros;
 		}
 
-        /// listar autores
+		/// listar autores
 		function listarAutores() {
 			AdminService.getSomething('autor', listarAutoresSuccessCallback, errorCallback);
 		}
@@ -38,7 +38,7 @@
 			$scope.listaDeAutores = data.autores;
 		}
 
-        /// listar categorias
+		/// listar categorias
 		function listarCategorias() {
 			AdminService.getSomething('categoria', listarCategoriasSuccessCallback, errorCallback);
 		}
@@ -47,59 +47,94 @@
 			$scope.listaDeCategorias = data.categorias;
 		}
 
-        ////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////      
-        /// inserir categoria
+		////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////      
+		/// inserir categoria
 		function addCategoria(categoria) {
-			console.log(categoria);
-			AdminService.insertSomething('categoria', categoria, inserirCategoriasSuccessCallback, errorCallback);
+			AdminService.insertSomething('categoria', categoria, errorCallback, inserirCategoriasSuccessCallback);
 		}
 
 		function inserirCategoriasSuccessCallback(data) {
-            console.log(data);
+			$location.path("/categorias");
+			swal("Sucesso", "A nova Categoria foi inserida!", "success");
 		}
 
-        /// inserir autor
+		/// inserir autor
 		function addAutor(autor) {
-			console.log(autor);
-			AdminService.insertSomething('autor', autor, inserirAutoresSuccessCallback, errorCallback);
+			AdminService.insertSomething('autor', autor, errorCallback, inserirAutoresSuccessCallback);
 		}
 
 		function inserirAutoresSuccessCallback(data) {
-            console.log(data);
+			$location.path("/autores");
+			swal("Sucesso", "O novo Autor for inserido!", "success");
 		}
 
-        /// inserir livro
+		/// inserir livro
 		function addLivro(livro) {
-			console.log(livro);
-			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
+			AdminService.insertSomething('livro', livro, errorCallback, inserirLivrosSuccessCallback);
 		}
 
 		function inserirLivrosSuccessCallback(data) {
-            console.log(data);
+			$location.path("/livros");
+			swal("Sucesso", "O novo livro foi inserido!", "success");
 		}
-        /// inserir categoria
+		/// inserir categoria
 		function remove(route, id) {
-            AdminService.deleteSomething(route, id, deleteSuccessCallback, errorCallback);
+			swal({
+					title: "Você tem certeza?",
+					text: "Essa ação não poderá ser desfeita!",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "Sim, exclua isso!",
+					cancelButtonText: "Não!",
+					closeOnConfirm: false,
+					closeOnCancel: false
+				},
+				function (isConfirm) {
+					if (isConfirm) {
+						AdminService.deleteSomething(route, id, errorCallback, deleteSuccessCallback);
+
+						if (route == 'categoria') {
+							var index = $scope.listaDeCategorias.map(e => {
+								return e.CategoryID;
+							}).indexOf(id);
+							$scope.listaDeCategorias.splice(index, 1);
+						} else if (route == 'autor') {
+							var index = $scope.listaDeAutores.map(e => {
+								return e.AuthorID;
+							}).indexOf(id);
+							$scope.listaDeAutores.splice(index, 1);
+						} else if (route == 'livro') {
+							var index = $scope.listaDeLivros.map(e => {
+								return e.ISBN;
+							}).indexOf(id);
+							$scope.listaDeLivros.splice(index, 1);
+						}
+						swal("Excluído!", "O registro excluído!", "success");
+					} else {
+						swal("Cancelado", "Seu registro está seguro :)", "error");
+					}
+				});
 		}
 
 		function deleteSuccessCallback(data) {
-            console.log(data);
+			console.log(data);
 		}
 
 		function errorCallback(error) {
-			console.log(error);
+			swal("Opsss", "Alguma coisa deu errado!", "error");
 		}
-    }
+	}
 
-    app.directive('navbarheaderadmin', function(){
+	app.directive('navbarheaderadmin', function () {
 		return {
 			restrict: 'AE',
 			templateUrl: '././views/admin/navbarheaderadmin.html'
 		}
 	});
 
-    app.directive('navbarleft', function(){
+	app.directive('navbarleft', function () {
 		return {
 			restrict: 'AE',
 			templateUrl: '././views/admin/navbarleft.html'
