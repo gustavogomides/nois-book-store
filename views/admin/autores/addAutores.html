@@ -20,36 +20,36 @@
     </div>
 </section>
 
-<section id="main">
-    <div class="container">
-        <div class="row">
-            <div ng-controller="AdminController">
+<div ng-controller="AdminController">
+    <section id="main">
+        <div class="container">
+            <div class="row">
                 <navbarleft></navbarleft>
-            </div>
-            <div class="col-md-9">
-                <!-- Visão Geral do Site -->
-                <div class="panel panel-default">
-                    <div class="panel-heading main-color-bg">
-                        <h3 class="panel-title">Adicionar Autor</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form action="#">
+                <div class="col-md-9">
+                    <!-- Visão Geral do Site -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading main-color-bg">
+                            <h3 class="panel-title">Adicionar Autor</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form ng-submit="AdminController.addAutor()">
 
-                            <div class="form-group">
-                                <label>Nome</label>
-                                <input type="text" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Informe o Nome">
-                            </div>
+                                <div class="form-group">
+                                    <label>Nome</label>
+                                    <input type="text" ng-model="nome" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Informe o Nome">
+                                </div>
 
-                            <div class="form-group">
-                                <label>Sobrenome</label>
-                                <input type="text" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Informe o Sobrenome">
-                            </div>
+                                <div class="form-group">
+                                    <label>Sobrenome</label>
+                                    <input type="text" ng-model="sobrenome" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Informe o Sobrenome">
+                                </div>
 
-                            <button type="submit" class="btn btn-success btn-lg">Cadastrar Autor</button>
-                        </form>
+                                <button type="submit" class="btn btn-success btn-lg">Cadastrar Autor</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>

@@ -15,7 +15,11 @@
         vm.listarCategorias = listarCategorias;
         
         vm.addCategoria = addCategoria;
+        vm.addAutor = addAutor;
+        vm.addLivro = addLivro;
 
+
+        vm.remove = remove;
 
 
 
@@ -58,6 +62,7 @@
 
         ////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////
+        
         var categoria = { nome : $scope.nome };
 
         /// inserir categoria
@@ -68,6 +73,71 @@
 		function inserirCategoriasSuccessCallback(data) {
             console.log(data);
 		}
+
+
+        var autor = { nome : $scope.nome, sobrenome : $scope.sobrenome  };
+
+        /// inserir autor
+		function addAutor() {
+			AdminService.insertSomething('autor', autor, inserirAutoresSuccessCallback, errorCallback);
+		}
+
+		function inserirAutoresSuccessCallback(data) {
+            console.log(data);
+		}
+
+
+        var livro = { 
+            isbn : $scope.isbn, 
+            titulo : $scope.titulo,
+            descricao : $scope.descricao,
+            preco : $scope.preco,
+            editora : $scope.editora,
+            data : $scope.data,
+            edicao : $scope.edicao,
+            paginas : $scope.paginas
+          };
+
+        /// inserir livro
+		function addLivro() {
+            console.log(livro);
+			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
+		}
+
+		function inserirLivrosSuccessCallback(data) {
+            console.log(data);
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /// inserir categoria
+		function remove(route, id) {
+            AdminService.deleteSomething(route, id, deleteSuccessCallback, errorCallback);
+		}
+
+		function deleteSuccessCallback(data) {
+            console.log(data);
+		}
+
+
+
+
+
+
+
+
+
 
 		function errorCallback(error) {
 			console.log(error);

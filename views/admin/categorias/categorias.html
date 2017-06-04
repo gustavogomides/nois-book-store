@@ -44,7 +44,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <input class="form-control" type="text" placeholder="Filtrar Livros...">
+                                <input class="form-control" ng-model="search" type="text" placeholder="Filtrar Livros...">
                             </div>
                         </div>
                         <br>
@@ -55,12 +55,12 @@
                                 <th></th>
                                 <th></th>
                             </tr>
-                            <tr ng-repeat="categoria in listaDeCategorias">
+                            <tr ng-repeat="categoria in listaDeCategorias | filter:search">
                                 <td>{{categoria.CategoryName}}</td>
                                 <td></td>
                                 <td></td>
                                 <td><a class="btn btn-default" href="#">Editar</a>
-                                    <a class="btn btn-danger" href="#">Apagar</a></td>
+                                    <button class="btn btn-danger" ng-click="AdminController.remove('categoria', categoria.CategoryID)">Apagar</button></td>
                             </tr>
                         </table>
                     </div>
