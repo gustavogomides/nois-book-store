@@ -86,21 +86,9 @@
             console.log(data);
 		}
 
-
-        var livro = { 
-            isbn : $scope.isbn, 
-            titulo : $scope.titulo,
-            descricao : $scope.descricao,
-            preco : $scope.preco,
-            editora : $scope.editora,
-            data : $scope.data,
-            edicao : $scope.edicao,
-            paginas : $scope.paginas
-          };
-
         /// inserir livro
-		function addLivro() {
-            console.log(livro);
+		function addLivro(livro) {
+			console.log(JSON.stringify(livro));
 			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
 		}
 
