@@ -1,65 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app="app">
+<html lang="pt-br" ng-app="admin">
 
 <head>
-  <meta charset="utf-8">
-  <title>Nois Book Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- Le styles -->
-  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-
-  <link href="css/style.css" rel="stylesheet">
-
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
-    <![endif]-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Área | Login </title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Style adicional CSS -->
+    <link href="css/style2.css" rel="stylesheet">
+    <!-- CDN CKeditor -->
+    <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 </head>
 
 <body>
 
-  <div class="container">
-
-    <div class="masthead">
-      
-      <div>
-        <a href="#/">
-          <img alt="Nois Book Store" src="img/nois.png">
-        </a>
-      </div>
-      
-
-    </div>
-
     <ng-view></ng-view>
-       
-    <hr>
 
-    <div class="footer">
-      <p>&copy; Nois Book Store - 2017</p>
-    </div>
+    <!-- Footer -->
+    <footer id="footer">
+        <p>Copyright Nois Book Store &copy; 2017</p>
+    </footer>
 
-  </div>
-  <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
 
-  <script src="http://code.jquery.com/jquery.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
-  <!-- Angular -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-resource.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-route.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-sanitize.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
 
-  <!-- CONTROLLERS -->
-  <script src="controllers/app-module.js"></script>
-  <script src="controllers/app-config.js"></script>
-  <script src="services/MainService.js"></script>
-  <script src="controllers/MainController.js"></script>
-  <script src="controllers/LivroController.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-sanitize.min.js"></script>
+
+    <!-- CONTROLLERS -->
+    <script src="controllers/admin/admin-module.js"></script>
+    <script src="controllers/admin/admin-config.js"></script>
+    <script src="services/AdminService.js"></script>
+    <script src="controllers/admin/AdminController.js"></script>
 
 </body>
 
