@@ -32,16 +32,16 @@
                             <h3 class="panel-title">Adicionar Autor</h3>
                         </div>
                         <div class="panel-body">
-                            <form ng-submit="AdminController.addAutor()">
+                            <form ng-submit="AdminController.addAutor(autor)">
 
                                 <div class="form-group">
                                     <label>Nome</label>
-                                    <input type="text" ng-model="nome" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Informe o Nome">
+                                    <input type="text" ng-model="autor.nameF" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Informe o Nome">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Sobrenome</label>
-                                    <input type="text" ng-model="sobrenome" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Informe o Sobrenome">
+                                    <input type="text" ng-model="autor.nameL" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Informe o Sobrenome">
                                 </div>
 
                                 <button type="submit" class="btn btn-success btn-lg">Cadastrar Autor</button>

@@ -34,11 +34,11 @@
                         <h3 class="panel-title">Adicionar Categoria</h3>
                     </div>
                     <div class="panel-body">
-                        <form ng-submit="AdminController.addCategoria()">
+                        <form ng-submit="AdminController.addCategoria(categoria)">
 
                             <div class="form-group">
                                 <label>Categoria</label>
-                                <input type="text" name="nome" ng-model="nome" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Categoria do Livro">
+                                <input type="text" ng-model="categoria.CategoryName" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2, 20}" placeholder="Categoria do Livro">
                             </div>
                             
                             <button type="submit" class="btn btn-success btn-lg">Cadastrar Categoria</button>

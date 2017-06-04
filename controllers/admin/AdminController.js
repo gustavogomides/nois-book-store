@@ -12,17 +12,11 @@
 
         vm.listarLivros = listarLivros;
         vm.listarAutores = listarAutores;
-        vm.listarCategorias = listarCategorias;
-        
+        vm.listarCategorias = listarCategorias;        
         vm.addCategoria = addCategoria;
         vm.addAutor = addAutor;
         vm.addLivro = addLivro;
-
-
         vm.remove = remove;
-
-
-
 
         ////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////
@@ -53,20 +47,11 @@
 			$scope.listaDeCategorias = data.categorias;
 		}
 
-
-
-
-
-
-
-
         ////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////
-        
-        var categoria = { nome : $scope.nome };
-
+        ////////////////////////////////////////////////////////////////////////////      
         /// inserir categoria
-		function addCategoria() {
+		function addCategoria(categoria) {
+			console.log(categoria);
 			AdminService.insertSomething('categoria', categoria, inserirCategoriasSuccessCallback, errorCallback);
 		}
 
@@ -74,11 +59,9 @@
             console.log(data);
 		}
 
-
-        var autor = { nome : $scope.nome, sobrenome : $scope.sobrenome  };
-
         /// inserir autor
-		function addAutor() {
+		function addAutor(autor) {
+			console.log(autor);
 			AdminService.insertSomething('autor', autor, inserirAutoresSuccessCallback, errorCallback);
 		}
 
@@ -88,27 +71,13 @@
 
         /// inserir livro
 		function addLivro(livro) {
-			console.log(JSON.stringify(livro));
+			console.log(livro);
 			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
 		}
 
 		function inserirLivrosSuccessCallback(data) {
             console.log(data);
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         /// inserir categoria
 		function remove(route, id) {
             AdminService.deleteSomething(route, id, deleteSuccessCallback, errorCallback);
@@ -118,35 +87,9 @@
             console.log(data);
 		}
 
-
-
-
-
-
-
-
-
-
 		function errorCallback(error) {
 			console.log(error);
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     app.directive('navbarheaderadmin', function(){
