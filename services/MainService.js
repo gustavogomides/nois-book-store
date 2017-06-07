@@ -12,6 +12,7 @@
 		vm.getLivro = getLivro;
 		vm.searchBooks = searchBooks;
 		vm.shoppingCart = shoppingCart;
+		vm.getLivroByIsbn = getLivroByIsbn;
 
 		function getList(url, successCallback, errorCallback) {
 			$http.get('http://localhost/api-nois-book-store/' + url + "/list")
@@ -61,8 +62,22 @@
 				);
 		}
 
+		function getLivroByIsbn(isbn, successCallback, errorCallback){
+			$http.get('http://localhost/api-nois-book-store/livro/' + isbn)
+				.then(
+					function (response) {
+						successCallback && successCallback(response.data);
+					},
+					function (error) {
+						errorCallback && errorCallback(error);
+					}
+				);
+		}
+
 		function shoppingCart(isbn, successCallback, errorCallback) {
-			$http.get('http://localhost/api-nois-book-store/shopping/' + isbn)
+			var url = 'http://localhost/api-nois-book-store/shopping/' + isbn;
+			// console.log(url);
+			$http.get(url)
 				.then(
 					function (response) {
 						successCallback && successCallback(response.data);

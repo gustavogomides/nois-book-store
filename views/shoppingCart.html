@@ -1,8 +1,8 @@
 <div ng-controller="MainController">
   <navbarheader></navbarheader>
 </div>
-<div ng-controller="LivroController">
-  <span ng-init="LivroController.getCarrinho()">
+<div ng-controller="CarrinhoController">
+  <span ng-init="CarrinhoController.atualizaQuantidade(null, true)">
     <div class="row-fluid">
       <div class="span12">
         <div class="block">
@@ -19,7 +19,7 @@
                   <th>Quantidade</th>
                   <th>Total</th>
                 </tr>
-                <tr ng-repeat="livro in cart.bookList">
+                <tr ng-repeat="livro in cart">
                   <td class="span1">
                     <a href="#/listar/livro/{{livro.title}}">
                       <img alt="300x200" src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.isbn}}.01.THUMBZZZ.jpg"
@@ -27,23 +27,23 @@
                     </a>
                   </td>
                   <td valign="middle"class="span5">
-                    <a href='#'><h5>{{livro.title}}</h5></a>
+                    <a href='#'><h5>{{livro.titulo}}</h5></a>
 
                   </td>
                   <td class="span2"><h5>{{livro.price | currency:"R$"}}</h5></td>
                   <td class="span2">
                     <div class="row-fluid">
                       <div class="span2">
-                        <h4 ng-style="{'color':'red'}">{{livro.qty}}</h4>
+                        <h4 ng-style="{'color':'red'}">{{livro.quantidade}}</h4>
                       </div>
                       <div class="span8">
-                        <a ng-click="LivroController.atualizaQuantidade(livro.isbn, true)" class="btn btn-primary btn-mini"><i class="icon-plus icon-white"></i> Adicionar</a>
+                        <a ng-click="CarrinhoController.atualizaQuantidade(livro.isbn, true)" class="btn btn-primary btn-mini"><i class="icon-plus icon-white"></i> Adicionar</a>
                         <p></p>
-                        <a ng-click="LivroController.atualizaQuantidade(livro.isbn, false)" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Remover</a>
+                        <a ng-click="CarrinhoController.atualizaQuantidade(livro.isbn, false)" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Remover</a>
                       </div>
                     </div>
                   </td>
-                  <td class="span1"><h5>{{livro.total | currency:"R$"}}</h5></td>
+                  <td class="span1"><h5>{{livro.subTotal | currency:"R$"}}</h5></td>
                 </tr>
                 <tr>
                   <th></th>

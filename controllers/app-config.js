@@ -25,7 +25,7 @@
 		});
 		$routeProvider.when('/shopping/:isbn', {
 			templateUrl: '././views/shoppingCart.html',
-			controller: 'LivroController as LivroController'
+			controller: 'CarrinhoController as CarrinhoController'
 		});
 		$routeProvider.when('/shopping/', {
 			templateUrl: '././views/shoppingCart.html',

@@ -4,9 +4,9 @@
 	var app = angular.module('app');
 	app.controller('MainController', MainController);
 
-	MainController.$inject = ['$scope', '$location', 'MainService'];
+	MainController.$inject = ['$scope', '$location', 'MainService', '$cookies'];
 
-	function MainController($scope, $location, MainService) {
+	function MainController($scope, $location, MainService, $cookies) {
 		var vm = this;
 		$scope.controller = vm;
 
@@ -15,6 +15,13 @@
 
 		$scope.onClickLogin = onClickLogin;
 
+		$scope.quantidadeCarrinho = 0;
+		if($cookies.getObject('infoLivro') != null){
+			$cookies.getObject('infoLivro').forEach(function(data){
+				$scope.quantidadeCarrinho += data.quantidade;
+			});
+		}
+		
 		list();
 
 		function list(){
