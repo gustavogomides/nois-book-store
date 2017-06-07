@@ -37,11 +37,11 @@
 		});
 		$routeProvider.when('/checkout02/:email', {
 			templateUrl: '././views/checkout02.html',
-			controller: 'CheckoutController as CheckoutController'
+			controller: 'Checkout_2_Controller as Checkout_2_Controller'
 		});
 		$routeProvider.when('/checkout03/', {
 			templateUrl: '././views/checkout03.html',
-			controller: 'CheckoutController as CheckoutController'
+			controller: 'Checkout_3_Controller as Checkout_3_Controller'
 		});
 	}
 

@@ -71,12 +71,28 @@
 
 		/// inserir livro
 		function addLivro(livro) {
-			AdminService.insertSomething('livro', livro, errorCallback, inserirLivrosSuccessCallback);
+			var categoria = $scope.listaDeCategorias.filter(function(data){
+				return data.CategoryName == livro.CategoryName;
+			});
+			livro.CategoryID = categoria[0].CategoryID;
+			
+			var autor = $scope.listaDeAutores.filter(function(data){
+				var split = livro.nameL.split(" ");
+				return data.nameF == split[0] && data.nameL == split[1];
+			});
+			livro.AuthorID = autor[0].AuthorID;
+			livro.description = '';
+			console.log(livro);
+			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
 		}
 
 		function inserirLivrosSuccessCallback(data) {
-			$location.path("/livros");
-			swal("Sucesso", "O novo livro foi inserido!", "success");
+			if(data == 'Livro inserido com sucesso!'){
+				swal("Sucesso", "O novo livro foi inserido!", "success");
+				$location.path("/livros");
+			}else{
+				swal("Erro", "O livro não foi inserido!", "error");
+			}
 		}
 		/// inserir categoria
 		function remove(route, id) {

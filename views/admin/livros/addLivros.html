@@ -41,7 +41,7 @@
 
                                 <div class="form-group">
                                     <label>Título</label>
-                                    <input type="text" class="form-control" ng-model="livro.title" required maxlength="100" pattern="[A-Za-z'-]{5,100}" placeholder="Título do Livro">
+                                    <input type="text" class="form-control" ng-model="livro.title" required maxlength="100" placeholder="Título do Livro">
                                 </div>
 
                                 <!-- <div class="form-group">
@@ -75,13 +75,13 @@
 
                                 <div class="form-group">
                                     <label>Preço</label>
-                                    <input type="text" ng-model="livro.price" required maxlength="6" pattern="^\d*(\.\d{2}$)?" class="form-control" placeholder="Preço do Livro">
+                                    <input type="number" ng-model="livro.price" required class="form-control" placeholder="Preço do Livro">
                                 </div>
 
 
                                 <div class="form-group">
                                     <label>Editora</label>
-                                    <input type="text" ng-model="livro.publisher" class="form-control" required maxlength="30" pattern="[A-Za-z'-]{5,30}" placeholder="Editora do Livro">
+                                    <input type="text" ng-model="livro.publisher" class="form-control" required maxlength="30" placeholder="Editora do Livro">
                                 </div>
 
                                 <div class="form-group">
@@ -91,12 +91,12 @@
 
                                 <div class="form-group">
                                     <label>Edição</label>
-                                    <input type="text" ng-model="livro.edition" required maxlength="2" pattern="[0-9]{1,2}" class="form-control" placeholder="Edição do Livro">
+                                    <input type="text" ng-model="livro.edition" required maxlength="5" class="form-control" placeholder="Edição do Livro">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Número de Páginas</label>
-                                    <input type="text" ng-model="livro.pages" required maxlength="4" pattern="[0-9]{1,4}" class="form-control" placeholder="Número de Páginas do Livro">
+                                    <input type="text" ng-model="livro.pages" required maxlength="5" class="form-control" placeholder="Número de Páginas do Livro">
                                 </div>
 
                                 <button type="submit" class="btn btn-success btn-lg">Cadastrar Livro</button>

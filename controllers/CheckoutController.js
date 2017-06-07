@@ -29,10 +29,6 @@
             })
         }
 
-        // TABELA bookcustomers
-        // CREATE TABLE `sandvigbookstore`.`bookcustomers` ( `custID` INT(11) NOT NULL AUTO_INCREMENT , `fname` VARCHAR(20) NOT NULL , 
-        // `lname` VARCHAR(20) NOT NULL , `email` VARCHAR(50) NOT NULL , `street` VARCHAR(25) NOT NULL , `city` VARCHAR(30) NOT NULL , 
-        // `state` VARCHAR(2) NOT NULL , `zip` VARCHAR(9) NOT NULL , PRIMARY KEY (`custID`)) ENGINE = InnoDB;
-	}
+    }
 
 })();

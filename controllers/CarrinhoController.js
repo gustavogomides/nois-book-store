@@ -36,6 +36,7 @@
 					$scope.cart.total = $scope.cart.subTot + $scope.cart.shipping;
 				});
 			}
+			console.log($scope.cart);
 		}
 
 		function atualizaQuantidade(isbn, add){

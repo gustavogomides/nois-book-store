@@ -14,6 +14,7 @@
 		vm.shoppingCart = shoppingCart;
 		vm.getLivroByIsbn = getLivroByIsbn;
 		vm.validEmail = validEmail;
+		vm.getCustomer = getCustomer;
 
 		function getList(url, successCallback, errorCallback) {
 			$http.get('http://localhost/api-nois-book-store/' + url + "/list")
@@ -90,6 +91,18 @@
 
 		function validEmail(email, successCallback, errorCallback){
 			$http.get('http://localhost/api-nois-book-store/checkout/valid-email/' + email)
+				.then(
+					function (response) {
+						successCallback && successCallback(response.data);
+					},
+					function (error) {
+						errorCallback && errorCallback(error);
+					}
+				);
+		}
+
+		function getCustomer(email, successCallback, errorCallback){
+			$http.get('http://localhost/api-nois-book-store/checkout/getCustomer/' + email)
 				.then(
 					function (response) {
 						successCallback && successCallback(response.data);
