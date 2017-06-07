@@ -29,19 +29,19 @@
 		});
 		$routeProvider.when('/shopping/', {
 			templateUrl: '././views/shoppingCart.html',
-			controller: 'LivroController as LivroController'
+			controller: 'CarrinhoController as CarrinhoController'
 		});
 		$routeProvider.when('/checkout01/', {
 			templateUrl: '././views/checkout01.html',
-			controller: 'LivroController as LivroController'
+			controller: 'CheckoutController as CheckoutController'
 		});
-		$routeProvider.when('/checkout02/', {
+		$routeProvider.when('/checkout02/:email', {
 			templateUrl: '././views/checkout02.html',
-			controller: 'LivroController as LivroController'
+			controller: 'CheckoutController as CheckoutController'
 		});
 		$routeProvider.when('/checkout03/', {
 			templateUrl: '././views/checkout03.html',
-			controller: 'LivroController as LivroController'
+			controller: 'CheckoutController as CheckoutController'
 		});
 	}
 

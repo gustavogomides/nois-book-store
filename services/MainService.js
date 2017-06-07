@@ -13,6 +13,7 @@
 		vm.searchBooks = searchBooks;
 		vm.shoppingCart = shoppingCart;
 		vm.getLivroByIsbn = getLivroByIsbn;
+		vm.validEmail = validEmail;
 
 		function getList(url, successCallback, errorCallback) {
 			$http.get('http://localhost/api-nois-book-store/' + url + "/list")
@@ -76,8 +77,19 @@
 
 		function shoppingCart(isbn, successCallback, errorCallback) {
 			var url = 'http://localhost/api-nois-book-store/shopping/' + isbn;
-			// console.log(url);
 			$http.get(url)
+				.then(
+					function (response) {
+						successCallback && successCallback(response.data);
+					},
+					function (error) {
+						errorCallback && errorCallback(error);
+					}
+				);
+		}
+
+		function validEmail(email, successCallback, errorCallback){
+			$http.get('http://localhost/api-nois-book-store/checkout/valid-email/' + email)
 				.then(
 					function (response) {
 						successCallback && successCallback(response.data);
