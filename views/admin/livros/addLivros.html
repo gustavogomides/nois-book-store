@@ -70,12 +70,12 @@
 
                                 <div class="form-group">
                                     <label>Descrição</label>
-                                    <textarea name="editor1" ng-model="livro.description" required class="form-control" placeholder="Descrição do Livro"></textarea>
+                                    <textarea name="editor1" ck-editor ng-model="livro.description" required class="form-control" placeholder="Descrição do Livro"></textarea>
                                 </div> 
 
                                 <div class="form-group">
                                     <label>Preço</label>
-                                    <input type="number" ng-model="livro.price" required class="form-control" placeholder="Preço do Livro">
+                                    <input type="number" step="0.01" ng-model="livro.price" required class="form-control" placeholder="Preço do Livro">
                                 </div>
 
 
@@ -108,8 +108,3 @@
         </div>
     </section>
 </div>
-
-<!-- CKeditor -->
-<script>
-    CKEDITOR.replace('editor1');
-</script>

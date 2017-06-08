@@ -71,26 +71,27 @@
 
 		/// inserir livro
 		function addLivro(livro) {
-			var categoria = $scope.listaDeCategorias.filter(function(data){
+			var categoria = $scope.listaDeCategorias.filter(function (data) {
 				return data.CategoryName == livro.CategoryName;
 			});
 			livro.CategoryID = categoria[0].CategoryID;
-			
-			var autor = $scope.listaDeAutores.filter(function(data){
+
+			var autor = $scope.listaDeAutores.filter(function (data) {
 				var split = livro.nameL.split(" ");
 				return data.nameF == split[0] && data.nameL == split[1];
 			});
+
 			livro.AuthorID = autor[0].AuthorID;
-			livro.description = '';
+			console.log(livro.description);
 			console.log(livro);
 			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
 		}
 
 		function inserirLivrosSuccessCallback(data) {
-			if(data == 'Livro inserido com sucesso!'){
+			if (data == 'Livro inserido com sucesso!') {
 				swal("Sucesso", "O novo livro foi inserido!", "success");
 				$location.path("/livros");
-			}else{
+			} else {
 				swal("Erro", "O livro não foi inserido!", "error");
 			}
 		}
@@ -156,5 +157,24 @@
 			templateUrl: '././views/admin/navbarleft.html'
 		}
 	});
+
+	app.directive("ckEditor", ["$timeout", function ($timeout) {
+		return {
+			require: '?ngModel',
+			link: function ($scope, element, attr, ngModelCtrl) {
+				var editor = CKEDITOR.replace(element[0]);
+
+				editor.on("change", function () {
+					$timeout(function () {
+						ngModelCtrl.$setViewValue(editor.getData());
+					});
+				});
+
+				ngModelCtrl.$render = function (value) {
+					editor.setData(ngModelCtrl.$modelValue);
+				};
+			}
+		};
+	}]);
 
 })();
