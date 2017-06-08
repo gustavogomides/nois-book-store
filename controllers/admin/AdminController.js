@@ -18,6 +18,12 @@
 		vm.addLivro = addLivro;
 		vm.remove = remove;
 		vm.formatData = formatData;
+		vm.listarAutorById = listarAutorById;
+		vm.listarCategoriaById = listarCategoriaById;
+		vm.listarLivroById = listarLivroById;
+		vm.updateAutor = updateAutor;
+		vm.updateCategoria = updateCategoria;
+		vm.updateLivro = updateLivro;
 
 		////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////
@@ -37,6 +43,34 @@
 
 		function listarAutoresSuccessCallback(data) {
 			$scope.listaDeAutores = data.autores;
+		}
+
+		/// listar autor pela ID
+		function listarAutorById() {
+			AdminService.getSomethingById('autor', $routeParams.id, listarAutoresByIdSuccessCallback, errorCallback);
+		}
+
+		function listarAutoresByIdSuccessCallback(data) {
+			$scope.autor = data;
+		}
+
+		/// listar categoria pela ID
+		function listarCategoriaById() {
+			AdminService.getSomethingById('categoria', $routeParams.id, listarCategoriasByIdSuccessCallback, errorCallback);
+		}
+
+		function listarCategoriasByIdSuccessCallback(data) {
+			$scope.categoria = data;
+		}
+
+		/// listar livro pela ID
+		function listarLivroById() {
+			AdminService.getSomethingById('livro', $routeParams.id, listarLivrosByIdSuccessCallback, errorCallback);
+		}
+
+		function listarLivrosByIdSuccessCallback(data) {
+			data.pubdate = new Date(data.pubdate.replace(',',''))
+			$scope.livro = data;
 		}
 
 		/// listar categorias
@@ -60,6 +94,17 @@
 			swal("Sucesso", "A nova Categoria foi inserida!", "success");
 		}
 
+
+		/// atualizar categoria
+		function updateCategoria(categoria) {
+			AdminService.updateSomething('categoria', categoria, errorCallback, atualizarCategoriasSuccessCallback);
+		}
+
+		function atualizarCategoriasSuccessCallback(data) {
+			$location.path("/categorias");
+			swal("Sucesso", "A Categoria foi Atualizado!", "success");
+		}
+
 		/// inserir autor
 		function addAutor(autor) {
 			AdminService.insertSomething('autor', autor, errorCallback, inserirAutoresSuccessCallback);
@@ -70,10 +115,20 @@
 			swal("Sucesso", "O novo Autor for inserido!", "success");
 		}
 
+		/// atualizar autor
+		function updateAutor(autor) {
+			AdminService.updateSomething('autor', autor, errorCallback, atualizarAutoresSuccessCallback);
+		}
+
+		function atualizarAutoresSuccessCallback(data) {
+			$location.path("/autores");
+			swal("Sucesso", "O Autor foi Atualizado!", "success");
+		}
+
 		function formatData(data) {
 			var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 			var oldDate = new Date(data);
-			return monthArray[oldDate.getMonth()] + ' ' + oldDate.getDay() + ' ,' + oldDate.getFullYear();
+			return monthArray[oldDate.getMonth()] + ' ' + oldDate.getDay() + ', ' + oldDate.getFullYear();
 		}
 
 		/// inserir livro
@@ -87,10 +142,9 @@
 				var split = livro.nameL.split(" ");
 				return data.nameF == split[0] && data.nameL == split[1];
 			});
-
+			livro.price = parseFloat(livro.price);
 			livro.AuthorID = autor[0].AuthorID;
 			livro.pubdate = formatData(livro.pubdate);
-			console.log(livro);
 			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
 		}
 
@@ -100,6 +154,34 @@
 				$location.path("/livros");
 			} else {
 				swal("Erro", "O livro não foi inserido!", "error");
+			}
+		}
+
+				/// inserir livro
+		function updateLivro(livro) {
+			var categoria = $scope.listaDeCategorias.filter(function (data) {
+				return data.CategoryName == livro.CategoryName;
+			});
+			livro.CategoryID = categoria[0].CategoryID;
+
+			var autor = $scope.listaDeAutores.filter(function (data) {
+				var split = livro.nameL.split(" ");
+				return data.nameF == split[0] && data.nameL == split[1];
+			});
+
+			livro.AuthorID = autor[0].AuthorID;
+			livro.pubdate = formatData(livro.pubdate);
+			console.log(livro);
+			AdminService.updateSomething('livro', livro, updateLivrosSuccessCallback, updateLivrosSuccessCallback);
+		}
+
+		function updateLivrosSuccessCallback(data) {
+			if (data == 'Livro Atualizado com sucesso!') {
+				swal("Sucesso", "O livro foi atualizado!", "success");
+				$location.path("/livros");
+			} else {
+				swal("Sucesso", "O livro foi atualizado!", "success");
+				$location.path("/livros");
 			}
 		}
 		/// inserir categoria

@@ -38,7 +38,19 @@
 		$routeProvider.when('/add/autor', {
 			templateUrl: '././views/admin/autores/addAutores.html',
 			controller: 'AdminController as AdminController'
-		});		
+		});
+		$routeProvider.when('/edit/livro/:id', {
+			templateUrl: '././views/admin/livros/editLivros.html',
+			controller: 'AdminController as AdminController'
+		});	
+		$routeProvider.when('/edit/categoria/:id', {
+			templateUrl: '././views/admin/categorias/editCategorias.html',
+			controller: 'AdminController as AdminController'
+		});	
+		$routeProvider.when('/edit/autor/:id', {
+			templateUrl: '././views/admin/autores/editAutores.html',
+			controller: 'AdminController as AdminController'
+		});			
 	}
 
 })();
