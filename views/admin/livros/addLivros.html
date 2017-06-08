@@ -44,10 +44,11 @@
                                     <input type="text" class="form-control" ng-model="livro.title" required maxlength="100" placeholder="Título do Livro">
                                 </div>
 
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label>Capa do Livro</label>
-                                    <input type="file" required name="pic" accept="image/*" class="form-control" placeholder="Capa do Livro">
-                                </div> -->
+                                    <input type="file" fileread="livro.image" required name="pic" accept="image/*" class="form-control" placeholder="Capa do Livro">
+                                </div> 
+
                                 <span ng-init="AdminController.listarCategorias()">
                                     <div class="form-group">
                                         <label>Categoria</label>

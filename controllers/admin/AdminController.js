@@ -17,6 +17,7 @@
 		vm.addAutor = addAutor;
 		vm.addLivro = addLivro;
 		vm.remove = remove;
+		vm.formatData = formatData;
 
 		////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////
@@ -69,6 +70,12 @@
 			swal("Sucesso", "O novo Autor for inserido!", "success");
 		}
 
+		function formatData(data) {
+			var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+			var oldDate = new Date(data);
+			return monthArray[oldDate.getMonth()] + ' ' + oldDate.getDay() + ' ,' + oldDate.getFullYear();
+		}
+
 		/// inserir livro
 		function addLivro(livro) {
 			var categoria = $scope.listaDeCategorias.filter(function (data) {
@@ -82,7 +89,7 @@
 			});
 
 			livro.AuthorID = autor[0].AuthorID;
-			console.log(livro.description);
+			livro.pubdate = formatData(livro.pubdate);
 			console.log(livro);
 			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
 		}
@@ -175,6 +182,25 @@
 				};
 			}
 		};
+	}]);
+
+	app.directive("fileread", [function () {
+		return {
+			scope: {
+				fileread: "="
+			},
+			link: function (scope, element, attributes) {
+				element.bind("change", function (changeEvent) {
+					var reader = new FileReader();
+					reader.onload = function (loadEvent) {
+						scope.$apply(function () {
+							scope.fileread = loadEvent.target.result;
+						});
+					}
+					reader.readAsDataURL(changeEvent.target.files[0]);
+				});
+			}
+		}
 	}]);
 
 })();
