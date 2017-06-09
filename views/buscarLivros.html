@@ -6,22 +6,27 @@
 	<span ng-init="LivroController.searchBooks()">
 		<div class="row-fluid">
 			<ul class="thumbnails">
-				<li class="span4" ng-repeat="livro in livrosEncontrados">
-					<div class="thumbnail">
-						<a href="#/listar/livro/{{livro.title}}">
-				            <img alt="300x200" src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.isbn}}.01.THUMBZZZ.jpg"
-				              alt="Capa do Livro {{livro.title}}">
-				        </a>						<div class="caption">
-							<h5>
-				              <a href="#/listar/livro/{{livro.title}}">{{livro.title | limitTo:35}}...</a>
-				            </h5>
-				            <p ng-bind-html="livro.description | limitTo: 120"></p>
-							<p><b>Preço:</b> {{livro.price | currency:"R$"}}</p>
+				<div ng-if="livrosEncontrados.length >= 1">
+					<li class="span4" ng-repeat="livro in livrosEncontrados">
+						<div class="thumbnail">
+							<a href="#/listar/livro/{{livro.title}}">
+								<img alt="300x200" src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.isbn}}.01.THUMBZZZ.jpg"
+								alt="Capa do Livro {{livro.title}}">
+							</a>						<div class="caption">
+								<h5>
+								<a href="#/listar/livro/{{livro.title}}">{{livro.title | limitTo:35}}...</a>
+								</h5>
+								<p ng-bind-html="livro.description | limitTo: 120"></p>
+								<p><b>Preço:</b> {{livro.price | currency:"R$"}}</p>
 
-							<p><a href="#/shopping/add{{livro.isbn}}"  class="btn btn-danger">Adicionar ao Carrinho</a> <a href="#/listar/livro/{{livro.title}}" class="btn btn-info">Ver Detalhes</a></p>
+								<p><a href="#/shopping/add{{livro.isbn}}"  class="btn btn-danger">Adicionar ao Carrinho</a> <a href="#/listar/livro/{{livro.title}}" class="btn btn-info">Ver Detalhes</a></p>
+							</div>
 						</div>
-					</div>
-				</li>
+					</li>
+				</div>
+				<div ng-if="livrosEncontrados.length < 1">
+					<h3>Nenhum livro foi encontrado!</h3>
+				</div>
 			</ul>
 		</div>
 	</span>

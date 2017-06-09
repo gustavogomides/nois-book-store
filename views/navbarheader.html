@@ -29,9 +29,9 @@
   </div>
 </div>
 
-<form class="form-search offset1">
+<form class="form-search offset1" action="buscar({{searchQuery}})">
   <div class="input-append">
     <input type="text" ng-model="searchQuery" class="search-query input-xxlarge" placeholder="Procure por algum livro em nossa loja...">
-    <a type="button" href="#/search/{{searchQuery}}" class="btn btn-primary">Buscar Livro</a>
+    <a type="submit" class="btn btn-primary">Buscar Livro</a>
   </div>
 </form>

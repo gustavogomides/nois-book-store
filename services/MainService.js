@@ -73,7 +73,7 @@
 		}
 
 		function getLivroByIsbn(isbn, successCallback, errorCallback){
-			$http.get('http://localhost/api-nois-book-store/livro/' + isbn)
+			$http.get('http://localhost/api-nois-book-store/livro/list/' + isbn)
 				.then(
 					function (response) {
 						successCallback && successCallback(response.data);
