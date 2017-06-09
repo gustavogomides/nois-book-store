@@ -43,85 +43,88 @@
 		// FUNÇÃO UTILIZADA PARA ATUALIZAR A QUANTIDADE DE UM DETERMINADO LIVRO
 		// E RECUPERAR AS INFORMAÇÕES DO LIVRO
 		function atualizaQuantidade(isbn, add){
-			
-			var existe = false;
-			
-			// variável auxiliar que armazena o isbn
-			var auxIsbn = null;
-			if(isbn == null){
-				var split = $routeParams.isbn.split("add");
-				auxIsbn = split[1];
-			}else{
-				auxIsbn = isbn;
-			}
-			
-			// verificando se aquele livro já existe no carrinho de compras
-			bookArray.forEach(function(data){
-				if(data.isbn == auxIsbn){
-					existe = true;
-				}
-			});
-			
-			if(existe){ // se aquele livro já está no carrinho de compras
-				if(add){ // só incremento a quantidade
-					bookArray.forEach(function(data){
-						if(data.isbn == auxIsbn){
-							data.quantidade += 1;
-						}
-					});
-				} else { // só decremento a quantidade
-					bookArray.forEach(function(data){
-						if(data.isbn == auxIsbn){
-							data.quantidade -= 1;
-							if(data.quantidade <= 0){ // se a quantidade do livro se torna 0
-								if(bookArray.length == 1){ // se só existe um livro no carrinho
-									bookArray = bookArray.filter(function(book){
-										return book.isbn != auxIsbn;
-									});
-									$cookies.remove('infoLivro');
-									$scope.cart = {};
-								}else{
-									bookArray = bookArray.filter(function(book){
-										return book.isbn != auxIsbn;
-									});
-								}
-								
-							}
-						}
-					});
-				}			
-			}else{ // se aquele livro não está no carrinho de compras
-				if(add){ // crio um nova posição para o livro e incremento a quantidade
-					bookArray.push({
-						isbn: auxIsbn,
-						quantidade: 0,
-						titulo: '',
-						preco: 0,
-						total: 0,
-						subTotal: 0,
-						frete: 0
-					});
-					bookArray.forEach(function(data){
-						if(data.isbn == auxIsbn){
-							data.quantidade += 1;
-						}
-					});
-				}
-			}
-			
-			// obtendo a data atual para setar o tempo
-			// de expiração do cookie
-			var expirationDate = new Date();
-        	expirationDate.setDate(expirationDate.getDate() + 7);
-
-			// obtendo as informações dos livros do carrinho de compras na API
-			// e setando o cookie
-			setShoppingCartInfo(function(){
-				$cookies.putObject('infoLivro', bookArray, {
-					expires: expirationDate
-				});
+			if($routeParams.isbn.split("add")[1] == -1){
 				getCarrinho();
-			});
+			}else{
+				var existe = false;
+				
+				// variável auxiliar que armazena o isbn
+				var auxIsbn = null;
+				if(isbn == null){
+					var split = $routeParams.isbn.split("add");
+					auxIsbn = split[1];
+				}else{
+					auxIsbn = isbn;
+				}
+				
+				// verificando se aquele livro já existe no carrinho de compras
+				bookArray.forEach(function(data){
+					if(data.isbn == auxIsbn){
+						existe = true;
+					}
+				});
+				
+				if(existe){ // se aquele livro já está no carrinho de compras
+					if(add){ // só incremento a quantidade
+						bookArray.forEach(function(data){
+							if(data.isbn == auxIsbn){
+								data.quantidade += 1;
+							}
+						});
+					} else { // só decremento a quantidade
+						bookArray.forEach(function(data){
+							if(data.isbn == auxIsbn){
+								data.quantidade -= 1;
+								if(data.quantidade <= 0){ // se a quantidade do livro se torna 0
+									if(bookArray.length == 1){ // se só existe um livro no carrinho
+										bookArray = bookArray.filter(function(book){
+											return book.isbn != auxIsbn;
+										});
+										$cookies.remove('infoLivro');
+										$scope.cart = {};
+									}else{
+										bookArray = bookArray.filter(function(book){
+											return book.isbn != auxIsbn;
+										});
+									}
+									
+								}
+							}
+						});
+					}			
+				}else{ // se aquele livro não está no carrinho de compras
+					if(add){ // crio um nova posição para o livro e incremento a quantidade
+						bookArray.push({
+							isbn: auxIsbn,
+							quantidade: 0,
+							titulo: '',
+							preco: 0,
+							total: 0,
+							subTotal: 0,
+							frete: 0
+						});
+						bookArray.forEach(function(data){
+							if(data.isbn == auxIsbn){
+								data.quantidade += 1;
+							}
+						});
+					}
+				}
+				
+				// obtendo a data atual para setar o tempo
+				// de expiração do cookie
+				var expirationDate = new Date();
+				expirationDate.setDate(expirationDate.getDate() + 7);
+
+				// obtendo as informações dos livros do carrinho de compras na API
+				// e setando o cookie
+				setShoppingCartInfo(function(){
+					$cookies.putObject('infoLivro', bookArray, {
+						expires: expirationDate
+					});
+					getCarrinho();
+				});
+	}
 		}
 
 		// FUNÇÃO RESPONSÁVEL POR RECUPERAR AS INFORMAÇÕES DOS LIVROS

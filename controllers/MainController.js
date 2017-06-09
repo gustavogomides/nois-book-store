@@ -10,8 +10,6 @@
 		var vm = this;
 		$scope.controller = vm;
 
-		vm.buscar = buscar;
-
 		$scope.categoriasTeste = [];
 		$scope.searchQuery = '';
 
@@ -39,10 +37,6 @@
 		function onClickLogin(path){
 			// $location.url(path);
 			window.location.href = 'http://localhost' + '/nois-book-store/' + path;
-		}
-
-		function buscar(searchQuery){
-			$location.url("#/search/" + searchQuery);
 		}
 
 	}
