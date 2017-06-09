@@ -12,43 +12,43 @@
 			controller: 'AdminController as AdminController'
 		});
 		$routeProvider.when('/dashboard', {
-			templateUrl: '././views/admin/dashboard.html',
+			templateUrl: '././views/admin/dashboard.php',
 			controller: 'AdminController as AdminController'
 		});
 		$routeProvider.when('/livros', {
-			templateUrl: '././views/admin/livros/livros.html',
+			templateUrl: '././views/admin/livros/livros.php',
 			controller: 'AdminController as AdminController'
 		});	
 		$routeProvider.when('/categorias', {
-			templateUrl: '././views/admin/categorias/categorias.html',
+			templateUrl: '././views/admin/categorias/categorias.php',
 			controller: 'AdminController as AdminController'
 		});	
 		$routeProvider.when('/autores', {
-			templateUrl: '././views/admin/autores/autores.html',
+			templateUrl: '././views/admin/autores/autores.php',
 			controller: 'AdminController as AdminController'
 		});	
 		$routeProvider.when('/add/livro', {
-			templateUrl: '././views/admin/livros/addLivros.html',
+			templateUrl: '././views/admin/livros/addLivros.php',
 			controller: 'AdminController as AdminController'
 		});	
 		$routeProvider.when('/add/categoria', {
-			templateUrl: '././views/admin/categorias/addCategorias.html',
+			templateUrl: '././views/admin/categorias/addCategorias.php',
 			controller: 'AdminController as AdminController'
 		});	
 		$routeProvider.when('/add/autor', {
-			templateUrl: '././views/admin/autores/addAutores.html',
+			templateUrl: '././views/admin/autores/addAutores.php',
 			controller: 'AdminController as AdminController'
 		});
 		$routeProvider.when('/edit/livro/:id', {
-			templateUrl: '././views/admin/livros/editLivros.html',
+			templateUrl: '././views/admin/livros/editLivros.php',
 			controller: 'AdminController as AdminController'
 		});	
 		$routeProvider.when('/edit/categoria/:id', {
-			templateUrl: '././views/admin/categorias/editCategorias.html',
+			templateUrl: '././views/admin/categorias/editCategorias.php',
 			controller: 'AdminController as AdminController'
 		});	
 		$routeProvider.when('/edit/autor/:id', {
-			templateUrl: '././views/admin/autores/editAutores.html',
+			templateUrl: '././views/admin/autores/editAutores.php',
 			controller: 'AdminController as AdminController'
 		});			
 	}

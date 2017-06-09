@@ -11,12 +11,12 @@
     <!-- /.container -->
 </header>
 
- <div ng-controller="AdminController">
+<div ng-controller="AdminController">
     <section id="main">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <form id="login" class="well">
+                    <form method="post" name="formLogin" action="views/admin/login.php" class="well">
                         <div class="form-group">
                             <label>Email</label>
                             <input type="text" name="email" class="form-control" placeholder="Email">
@@ -25,7 +25,7 @@
                             <label>Senha</label>
                             <input type="password" name="senha" class="form-control" placeholder="Senha">
                         </div>
-                        <a href="#/dashboard" type="submit" class="btn btn-default btn-block">Login</a>
+                        <button type="submit" class="btn btn-default btn-block">Login</button>
                     </form>
                 </div>
             </div>
