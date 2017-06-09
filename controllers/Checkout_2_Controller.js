@@ -9,7 +9,9 @@
 	function Checkout_2_Controller($scope, $routeParams, MainService, $cookies, $location) {
 		var vm = this;
 		$scope.controller = vm;
-        $scope.customer = [];
+        $scope.customer = {};
+
+        vm.processarPedido= processarPedido;
 
         $scope.quantidadeCheckout2 = 0;
 		if($cookies.getObject('infoLivro') != null){
@@ -20,14 +22,13 @@
 
         getCustomer($routeParams.email);
 
-
         function getCustomer(email){
             MainService.getCustomer(email, function(result){
-                console.log(result);
                 if(result == 'Nenhum customer encontrado'){
                     $scope.customer.info = 'Benvido ao nosso site -- Por favor, forneça um endereço para entrega';
                 }else{
                     $scope.customer.info = 'Benvindo de volta -- Por favor, confirme seu endereço de entrega';
+                    $scope.customer.custID = result.custID;
                     $scope.customer.email = result.email;
                     $scope.customer.nome = result.fname;
                     $scope.customer.sobrenome = result.lname;
@@ -39,8 +40,33 @@
             });
         }
 
-        function getCustomerExport(){
-            return $scope.customer;
+        function processarPedido(customer){
+            MainService.validEmail(customer.email, function(result){
+                if(result == 'Email valido!'){
+                    MainService.validState(customer.estado, function(resposta){
+                        if(resposta == 'State valido!'){
+                            if(customer.custID != null){ // já foi cadastrado anteriormente
+                                MainService.updateCustomer(customer, function(response){
+                                    $location.url('/checkout03/' + customer.custID + '/' + customer.nome + '/' + customer.sobrenome
+                                        + '/' + customer.rua + '/' +customer.cidade + '/' + customer.estado + '/' + customer.cep
+                                        + '/' + customer.email);
+                                });
+                            }else{
+                                MainService.insertCustomer(customer, function(response){
+                                    var custID = parseInt(response);
+                                    $location.url('/checkout03/' + custID + '/' + customer.nome + '/' + customer.sobrenome
+                                        + '/' + customer.rua + '/' +customer.cidade + '/' + customer.estado + '/' + customer.cep
+                                        + '/' + customer.email);
+                                });
+                            }
+                        }else{
+                            swal("Estado inválido!", "Por favor digite um estado válido!", "error");
+                        }
+                    });
+                }else{
+                    swal("E-mail inválido!", "Por favor digite um e-mail válido!", "error");
+                }
+            });
         }
         
         // TABELA bookcustomers

@@ -14,11 +14,14 @@
                 <div class="span12">
                     <div class="alert alert-info text-center">{{customer.info}}</div>
                     <div class="offset2">
-                        <form class="form-horizontal" action="#/checkout03">
+                        <form class="form-horizontal">
+                           
+                            <input type="hidden" ng-model="customer.custID">
+                           
                             <div class="control-group">
                                 <label class="control-label" for="email">Email</label>
                                 <div class="controls">
-                                    <input type="email" required id="email" placeholder="Informe seu Email"
+                                    <input type="text" required id="email" placeholder="Informe seu Email" maxlength="50"
                                         ng-style="{'width': '275px'}" ng-model="customer.email">
                                 </div>
                             </div>
@@ -26,7 +29,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="nome">Nome</label>
                                 <div class="controls">
-                                    <input type="text" required id="nome" placeholder="Informe seu Nome" maxlength="25" 
+                                    <input type="text" required id="nome" placeholder="Informe seu Nome" maxlength="20" 
                                     ng-style="{'width': '275px'}" ng-model="customer.nome">
                                 </div>
                             </div>
@@ -58,7 +61,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="estado">Estado</label>
                                 <div class="controls">
-                                    <input type="text" required id="estado" length="2" placeholder="Informe seu Estado" 
+                                    <input type="text" required id="estado" maxlength="2" placeholder="Informe seu Estado" 
                                     ng-style="{'width': '130px'}" ng-model="customer.estado">
                                 </div>
                             </div>
@@ -73,7 +76,8 @@
 
                             <div class="control-group">
                                 <div class="controls">
-                                    <button type="submit" class="btn btn-primary offset3">Processar Pedido</button>
+                                    <button type="submit" class="btn btn-primary offset3"
+                                    ng-click="Checkout_2_Controller.processarPedido(customer)">Processar Pedido</button>
                                 </div>
                             </div>
                         </form>

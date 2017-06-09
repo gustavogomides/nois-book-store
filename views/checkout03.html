@@ -12,11 +12,13 @@
                     <div class="alert alert-success text-center">Uma confirmação de pedido foi enviada para seu email.<br/> Obrigado por comprar na Nois Book Store!</div>
                     <p>
                         <ul>
-                            <li><b>Número do Pedido:</b> 1002212</li>
-                            <li><b>Endereço de Envio:</b> Rua do Imigrantes, nº 345 - São Paulo - SP</li><br>
+                            <li><b>Número do Pedido:</b> {{orderID}}</li>
+                            <li><b>Endereço de Envio:</b><br>
+                                <p>{{nome}} {{sobrenome}}<br>{{rua}}, {{cidade}}, {{estado}}, {{cep}}</p>
+                            </li><br>
                         </ul>
                     </p>
-
+                    
                     <p>
                         <table class="table table-hover table-striped">
                             <tr>
@@ -25,25 +27,33 @@
                                 <th>Preço</th>
                                 <th>Total</th>
                             </tr>
+                            <tr ng-repeat="livro in cartCheckout">
+                                <td>{{livro.titulo}}</td>
+                                <td>{{livro.quantidade}}</td>
+                                <td>{{livro.preco | currency:"R$"}}</td>
+                                <td>{{livro.subTotal | currency:"R$"}}</td>
+                            </tr>
                             <tr>
-                                <td>Titulo do Livro</td>
-                                <td>2</td>
-                                <td>$49.90</td>
-                                <td>$99.80</td>
+                                <th>Sub-Total</th>
+                                <th colspan='2'></th>
+                                <th>{{cartCheckout.subTotal | currency:"R$"}}</th>
                             </tr>
                             <tr>
                                 <th>Frete</th>
                                 <th colspan='2'></th>
-                                <th>$8.00</th>
+                                <th>{{cartCheckout.frete | currency:"R$"}}</th>
                             </tr>
                             <tr>
                                 <th>Total</th>
                                 <th colspan='2'></th>
-                                <th>$107.80</th>
+                                <th>{{cartCheckout.total | currency:"R$"}}</th>
                             </tr>
                         </table>
                     </p>
 
+                    <p>
+                        <a ng-click="Checkout_3_Controller.redirecionar()" class="btn btn-info">Histórico de Pedidos</a>
+                    </p>
                 </div>
             </div>
         </div>

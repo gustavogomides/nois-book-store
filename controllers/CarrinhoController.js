@@ -24,6 +24,7 @@
 			bookArray = [];
 		}
 
+		// FUNÇÃO UTILIZADA PARA RECUPERAR OS LIVROS DO CARRINHO
         function getCarrinho() {
 			$scope.cart = $cookies.getObject('infoLivro');
 			if($scope.cart != null){
@@ -39,10 +40,13 @@
 			console.log($scope.cart);
 		}
 
+		// FUNÇÃO UTILIZADA PARA ATUALIZAR A QUANTIDADE DE UM DETERMINADO LIVRO
+		// E RECUPERAR AS INFORMAÇÕES DO LIVRO
 		function atualizaQuantidade(isbn, add){
 			
 			var existe = false;
 			
+			// variável auxiliar que armazena o isbn
 			var auxIsbn = null;
 			if(isbn == null){
 				var split = $routeParams.isbn.split("add");
@@ -69,10 +73,19 @@
 					bookArray.forEach(function(data){
 						if(data.isbn == auxIsbn){
 							data.quantidade -= 1;
-							if(data.quantidade <= 0){
-								bookArray = bookArray.filter(function(book){
-									return book.isbn != auxIsbn;
-								});
+							if(data.quantidade <= 0){ // se a quantidade do livro se torna 0
+								if(bookArray.length == 1){ // se só existe um livro no carrinho
+									bookArray = bookArray.filter(function(book){
+										return book.isbn != auxIsbn;
+									});
+									$cookies.remove('infoLivro');
+									$scope.cart = {};
+								}else{
+									bookArray = bookArray.filter(function(book){
+										return book.isbn != auxIsbn;
+									});
+								}
+								
 							}
 						}
 					});
@@ -111,6 +124,8 @@
 			});
 		}
 
+		// FUNÇÃO RESPONSÁVEL POR RECUPERAR AS INFORMAÇÕES DOS LIVROS
+		// DO CARRINHO NA API
 		function setShoppingCartInfo(callback){
 			var cont = 0;
 			bookArray.forEach(function(data){
@@ -126,9 +141,10 @@
 			});
 		}
 
+		// FUNÇÃO RESPONSÁVEL POR SETAR AS INFORMAÇÕES DOS LIVROS
 		function setInfo(result, data){
 			data.titulo = result.title;
-			data.price = result.price;
+			data.preco = parseInt(result.price);
 			data.subTotal = result.price * data.quantidade;
 			data.frete = (data.quantidade - 1) * 3 + 5;
 			data.total = data.subTotal + data.frete;

@@ -39,10 +39,15 @@
 			templateUrl: '././views/checkout02.html',
 			controller: 'Checkout_2_Controller as Checkout_2_Controller'
 		});
-		$routeProvider.when('/checkout03/', {
+		$routeProvider.when('/checkout03/:custID/:nome/:sobrenome/:rua/:cidade/:estado/:cep/:email', {
 			templateUrl: '././views/checkout03.html',
 			controller: 'Checkout_3_Controller as Checkout_3_Controller'
 		});
+		$routeProvider.when('/historico/:custID', {
+			templateUrl: '././views/historico.html',
+			controller: 'HistoricoController as HistoricoController'
+		});
+
 	}
 
 })();
