@@ -21,6 +21,8 @@
 		vm.insertBookOrder = insertBookOrder;
 		vm.insertBookOrderItem = insertBookOrderItem;
 		vm.enviarEmail = enviarEmail;
+		vm.getHistorico = getHistorico;
+		vm.getAutores = getAutores;
 
 		function getList(url, successCallback, errorCallback) {
 			$http.get('http://localhost/api-nois-book-store/' + url + "/list")
@@ -204,6 +206,30 @@
 					errorCallback && errorCallback(error);
 				}
 			);
+		}
+
+		function getHistorico(custID, successCallback){
+			$http.get('http://localhost/api-nois-book-store/checkout/historico/' + custID)
+				.then(
+					function (response) {
+						successCallback && successCallback(response.data);
+					},
+					function (error) {
+						errorCallback && errorCallback(error);
+					}
+				);
+		}
+
+		function getAutores(isbn, successCallback){
+			$http.get('http://localhost/api-nois-book-store/autor/isbn/' + isbn)
+				.then(
+					function (response) {
+						successCallback && successCallback(response.data);
+					},
+					function (error) {
+						errorCallback && errorCallback(error);
+					}
+				);
 		}
 	}
 

@@ -1,0 +1,29 @@
+<div ng-controller="MainController">
+    <navbarheader></navbarheader>
+</div>
+            
+<div class="row-fluid" ng-controller="HistoricoController">
+    
+    <ul class="thumbnails">
+      <li style="width:100%;" ng-repeat="livro in historico">
+        <div class="thumbnail">
+         <div style="text-align: center;">
+            <a href="#/listar/livro/{{livro.title}}">
+                <img alt="300x200" src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.isbn}}.01.THUMBZZZ.jpg"
+                alt="Capa do Livro Titulo">
+            </a>
+         </div>
+          <div class="caption">
+            <h5>
+                Order ID: {{livro.orderID}} - {{livro.orderdate}}
+            </h5>   
+            <h5>
+              <a href="#/listar/livro/{{livro.title}}">{{livro.title}}</a>
+            </h5>
+            <p><b>Quantidade: </b>{{livro.qty}}</p>
+             
+          </div>
+        </div>
+      </li>
+  </ul>
+</div>
