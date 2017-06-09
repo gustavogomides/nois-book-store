@@ -1,3 +1,4 @@
+<?php include 'validate.php' ?>
 <div ng-controller="AdminController">
     <navbarheaderadmin></navbarheaderadmin>
 </div>

@@ -1,3 +1,4 @@
+<?php include '../validate.php' ?>
 <div ng-controller="AdminController">
     <navbarheaderadmin></navbarheaderadmin>
 </div>
@@ -24,7 +25,6 @@
 <section id="main">
     <div class="container">
         <div class="row">
-            <div ng-controller="AdminController">
                 <navbarleft></navbarleft>
             </div>
             <div class="col-md-9">

@@ -1,3 +1,4 @@
+<?php include '../validate.php' ?>
 <div ng-controller="AdminController">
   <navbarheaderadmin></navbarheaderadmin>
 </div>
@@ -57,7 +58,7 @@
                     <td>{{livro.title | limitTo:30}}</td>
                     <td>{{livro.price | currency:"R$"}}</td>
                     <td>{{livro.ISBN}}</td>
-                    <td><a class="btn btn-default" href="#">Editar</a>
+                    <td><a class="btn btn-default" href="#/edit/livro/{{livro.ISBN}}">Editar</a>
                         <button class="btn btn-danger" ng-click="AdminController.remove('livro', livro.ISBN)">Apagar</button></td>
                   </tr>
                 </table>
