@@ -49,32 +49,38 @@
                         <h3 class="panel-title">Visão Geral da Loja</h3>
                     </div>
                     <div class="panel-body">
+                        <a href="#/livros">
                         <div class="col-md-3">
                             <div class="well dash-box">
                                 <h2>
-                                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 12
+                                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                                 </h2>
                                 <h4>Livros</h4>
                             </div>
                         </div>
+                        </a>
+                        <a href="#/categorias">
 
                         <div class="col-md-3">
                             <div class="well dash-box">
                                 <h2>
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 12
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
                                 </h2>
                                 <h4>Categorias</h4>
                             </div>
                         </div>
+                        </a>
+                        <a href="#/autores">
 
                         <div class="col-md-3">
                             <div class="well dash-box">
                                 <h2>
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 12
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
                                 </h2>
                                 <h4>Autores</h4>
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>

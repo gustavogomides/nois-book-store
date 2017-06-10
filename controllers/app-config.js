@@ -47,7 +47,10 @@
 			templateUrl: '././views/historico.html',
 			controller: 'HistoricoController as HistoricoController'
 		});
-
+		$routeProvider.when('/sobrenos', {
+			templateUrl: '././views/sobrenos.html',
+			controller: 'LivroController as LivroController'
+		});
 	}
 
 })();

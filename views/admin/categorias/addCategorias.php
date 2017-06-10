@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
                 <navbarleft></navbarleft>
-            </div>
+            
             <div class="col-md-9">
                 <!-- Visão Geral do Site -->
                 <div class="panel panel-default">
