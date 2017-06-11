@@ -13,6 +13,8 @@
 
   <link href="css/style.css" rel="stylesheet">
   <link href="css/sweetalert.css" rel="stylesheet">
+  <link href="css/lightbox.css" rel="stylesheet">
+
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -25,18 +27,18 @@
   <div class="container">
 
     <div class="masthead">
-      
+
       <div>
         <a href="#/">
           <img alt="Nois Book Store" src="img/nois.png">
         </a>
       </div>
-      
+
 
     </div>
 
     <ng-view></ng-view>
-       
+
     <hr>
 
     <div class="footer">
@@ -68,6 +70,14 @@
   <script src="controllers/Checkout_2_Controller.js"></script>
   <script src="controllers/Checkout_3_Controller.js"></script>
   <script src="controllers/HistoricoController.js"></script>
+
+  <script src="js/lightbox.js "></script>
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+  </script>
 
 </body>
 

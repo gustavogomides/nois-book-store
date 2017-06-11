@@ -47,7 +47,7 @@
 
                                 <div class="form-group">
                                     <label>Capa do Livro</label>
-                                    <input type="file" fileread="livro.image" required name="pic" accept="image/*" class="form-control" placeholder="Capa do Livro">
+                                    <input type="file" fileread="livro.image" required name="pic" accept=".jpg, .jpeg" class="form-control" placeholder="Capa do Livro">
                                 </div> 
 
                                 <span ng-init="AdminController.listarCategorias()">

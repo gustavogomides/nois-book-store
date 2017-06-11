@@ -145,8 +145,6 @@
 			livro.price = parseFloat(livro.price);
 			livro.AuthorID = autor[0].AuthorID;
 			livro.pubdate = formatData(livro.pubdate);
-						console.log(JSON.stringify(livro))
-
 			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
 		}
 
@@ -172,7 +170,6 @@
 			livro.CategoryID = categoria[0].CategoryID;
 			livro.AuthorID = autor[0].AuthorID;
 			livro.pubdate = formatData(livro.pubdate);
-			console.log(livro)
 			AdminService.updateSomething('livro', livro, updateLivrosSuccessCallback, updateLivrosSuccessCallback);
 		}
 
