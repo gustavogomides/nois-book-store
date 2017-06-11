@@ -56,7 +56,7 @@
                                     <div class="form-group">
                                         <label>Categoria</label>
                                             <select class="form-control" required ng-model="livro.CategoryName" >
-                                            <option ng-repeat="categoria in listaDeCategorias" ng-selected="categoria.CategoryName">{{categoria.CategoryName}}</option>
+                                            <option ng-repeat="categoria in listaDeCategorias" ng-selected="categoria.CategoryName == livro.CategoryName">{{categoria.CategoryName}}</option>
                                         </select>
                                     </div>
                                 </span>
@@ -64,12 +64,12 @@
                                 <span ng-init="AdminController.listarAutores()">
                                     <div class="form-group">
                                         <label>Autor</label>
-                                        <select class="form-control" required ng-model="livro.nameL">
-                                            <option ng-repeat="autor in listaDeAutores" ng-selected="autor.nameL">{{autor.nameF}} {{autor.nameL}}</option>
+                                            <select class="form-control" required ng-model="livro.nameL" >
+                                            <option ng-repeat="autor in listaDeAutores" ng-selected="autor.nameL == livro.nameL">{{autor.nameL}}</option>
                                         </select>
                                     </div>
                                 </span>
-
+                                
                                 <div class="form-group">
                                     <label>Descrição</label>
                                     <textarea name="editor1" ck-editor ng-model="livro.description" required class="form-control" placeholder="Descrição do Livro"></textarea>

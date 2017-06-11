@@ -145,6 +145,8 @@
 			livro.price = parseFloat(livro.price);
 			livro.AuthorID = autor[0].AuthorID;
 			livro.pubdate = formatData(livro.pubdate);
+						console.log(JSON.stringify(livro))
+
 			AdminService.insertSomething('livro', livro, inserirLivrosSuccessCallback, errorCallback);
 		}
 
@@ -162,16 +164,15 @@
 			var categoria = $scope.listaDeCategorias.filter(function (data) {
 				return data.CategoryName == livro.CategoryName;
 			});
-			livro.CategoryID = categoria[0].CategoryID;
 
 			var autor = $scope.listaDeAutores.filter(function (data) {
-				var split = livro.nameL.split(" ");
-				return data.nameF == split[0] && data.nameL == split[1];
+				return data.nameL == livro.nameL;
 			});
-
+		
+			livro.CategoryID = categoria[0].CategoryID;
 			livro.AuthorID = autor[0].AuthorID;
 			livro.pubdate = formatData(livro.pubdate);
-			console.log(livro);
+			console.log(livro)
 			AdminService.updateSomething('livro', livro, updateLivrosSuccessCallback, updateLivrosSuccessCallback);
 		}
 
