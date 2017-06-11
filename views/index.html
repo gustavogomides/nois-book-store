@@ -6,15 +6,17 @@
     <ul class="thumbnails" ng-init="LivroController.listLivro()">
       <li class="span4" ng-repeat="livro in livrosInicio">
         <div class="thumbnail">
-          <a href="#/listar/livro/{{livro.title}}">
-            <img height="150" width="75" src="img/capas/{{livro.ISBN}}.jpeg"
-              alt="Capa do Livro {{livro.title}}">
-          </a>
+          <div style="text-align: center">
+            <a href="#/listar/livro/{{livro.title}}">
+              <img height="150" width="75" src="img/capas/{{livro.ISBN}}.jpeg"
+                alt="Capa do Livro {{livro.title}}">
+            </a>
+          </div>
           <div class="caption">
             <h5>
-              <a href="#/listar/livro/{{livro.title}}">{{livro.title | limitTo:35}}...</a>
+              <a href="#/listar/livro/{{livro.title}}">{{livro.title}}</a>
             </h5>
-            <p ng-bind-html="livro.description | limitTo: 120"></p>
+            <p ng-bind-html="livro.description"></p>
             <p><b>Preço:</b> {{livro.price | currency:"R$"}}</p>
              <p>
               <a href="#/shopping/add{{livro.ISBN}}" class="btn btn-danger">Adicionar ao Carrinho</a> 

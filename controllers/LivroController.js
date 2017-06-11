@@ -48,6 +48,21 @@
 
 		function listLivroSuccessCallback(data) {
 			$scope.livrosInicio = getUnique(data.livros, 3);
+			$scope.livrosInicio.forEach(function(data){
+				data.description = doTruncarStr(data.description, 100);
+			});
+		}
+
+		function doTruncarStr(str, size){
+			if (str==undefined || str=='undefined' || str =='' || size==undefined || size=='undefined' || size ==''){
+				return str;
+			}
+			
+			var shortText = str;
+			if(str.length >= size+3){
+				shortText = str.substring(0, size).concat('...');
+			}
+			return shortText;
 		}
 
 		function listLivroErrorCallback() {
