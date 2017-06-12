@@ -17,9 +17,9 @@
                             <span class="caret"></span>
                         </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#/addLivro">Adicionar Livro</a></li>
-                        <li><a href="#/addAutor">Adicionar Autor</a></li>
-                        <li><a href="#/addCategoria">Adicionar Categoria</a></li>
+                        <li><a href="#/add/livro">Adicionar Livro</a></li>
+                        <li><a href="#/add/autor">Adicionar Autor</a></li>
+                        <li><a href="#/add/categoria">Adicionar Categoria</a></li>
                     </ul>
                 </div>
             </div>

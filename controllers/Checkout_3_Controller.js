@@ -57,8 +57,8 @@
 							quantidade: data.quantidade,
 							preco: parseInt(resposta.price),
 							subTotal: parseInt(resposta.price * data.quantidade),
-							frete: (data.quantidade - 1) * 3 + 5,
-							total: parseInt(resposta.price * data.quantidade) + ((data.quantidade - 1) * 3 + 5)
+							frete: (data.quantidade - 1) * 5 + 10,
+							total: parseInt(resposta.price * data.quantidade) + ((data.quantidade - 1) * 5 + 10)
 						});
 						
 						$scope.cartCheckout = livrosInfo;

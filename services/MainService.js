@@ -23,6 +23,7 @@
 		vm.enviarEmail = enviarEmail;
 		vm.getHistorico = getHistorico;
 		vm.getAutores = getAutores;
+		vm.getLivrosAutor = getLivrosAutor;
 
 		function getList(url, successCallback, errorCallback) {
 			$http.get('http://localhost/api-nois-book-store/' + url + "/list")
@@ -222,6 +223,22 @@
 
 		function getAutores(isbn, successCallback){
 			$http.get('http://localhost/api-nois-book-store/autor/isbn/' + isbn)
+				.then(
+					function (response) {
+						successCallback && successCallback(response.data);
+					},
+					function (error) {
+						errorCallback && errorCallback(error);
+					}
+				);
+		}
+
+		function getLivrosAutor(nome, successCallback){
+			var split = nome.split(" ");
+			var nomeAutor = split[0] + "-" + split[1];
+			var url = 'http://localhost/api-nois-book-store/livro/autor/' + nomeAutor;
+			console.log(url)
+			$http.get(url)
 				.then(
 					function (response) {
 						successCallback && successCallback(response.data);

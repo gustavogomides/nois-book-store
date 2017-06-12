@@ -17,19 +17,19 @@
 
 
         function getLivrosAutor(){
-            MainService.searchBooks($routeParams.autor, function(response){
+            MainService.getLivrosAutor($routeParams.autor, function(response){
                 $scope.autor = $routeParams.autor;
-                $scope.quantidadeLivrosAutor = response.search.length;
+                $scope.quantidadeLivrosAutor = response.length;
                 console.log(response);
                 if($scope.quantidadeLivrosAutor == 1){
                     $scope.quantidadeLivrosAutor += ' livro encontrado do autor <b>'+$routeParams.autor+'</b>';
                 }else if($scope.quantidadeLivrosAutor > 1) {
-                    $scope.quantidadeLivrosAutor+=' livros encontrados do autor <b>'+$routeParams.autor+'</b>';
+                    $scope.quantidadeLivrosAutor += ' livros encontrados do autor <b>'+$routeParams.autor+'</b>';
                 }
 
-                response.search.forEach(function(data){
+                response.forEach(function(data){
                     livrosArray.push({
-                        isbn: data.isbn,
+                        isbn: data.ISBN,
                         titulo: data.title,
                         descricao: doTruncarStr(data.description, 200)
                     });

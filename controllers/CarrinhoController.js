@@ -149,7 +149,7 @@
 			data.titulo = result.title;
 			data.preco = parseInt(result.price);
 			data.subTotal = result.price * data.quantidade;
-			data.frete = (data.quantidade - 1) * 3 + 5;
+			data.frete = (data.quantidade - 1) * 5 + 10;
 			data.total = data.subTotal + data.frete;
 		}
 	}

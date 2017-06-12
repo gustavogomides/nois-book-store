@@ -1,14 +1,13 @@
 <div ng-controller="MainController">
     <navbarheader></navbarheader>
 </div>
-            
+
 <div class="row-fluid" ng-controller="AutorController">
-    <div ng-if="livrosAutor.length > 1">
+    <div ng-if="livrosAutor.length >= 1">
         <h5 style="text-align: center" ng-bind-html="quantidadeLivrosAutor">
             {{quantidadeLivrosAutor}}
         </h5>
         <ul class="thumbnails">
-        <li style="width:100%;" ng-repeat="livro in livrosAutor">
         <li style="width:100%;" ng-repeat="livro in livrosAutor">
             <div class="thumbnail">
             <div style="text-align: center;">
@@ -29,5 +28,8 @@
             </div>
         </li>
     </ul>
+  </div>
+  <div ng-if="livrosAutor.length < 1">
+    <h4>Nenhum livro encontrado!</h4>
   </div>
 </div>
