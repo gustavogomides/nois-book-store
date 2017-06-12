@@ -21,13 +21,13 @@
                 </tr>
                 <tr ng-repeat="livro in cart">
                   <td class="span1">
-                    <a href="#/listar/livro/{{livro.title}}">
+                    <a href="#/listar/livro/{{livro.titulo}}">
                       <img height="150" width="75" src="img/capas/{{livro.isbn}}.jpeg"
-                        alt="Capa do Livro {{livro.title}}">
+                        alt="Capa do Livro {{livro.titulo}}">
                     </a>
                   </td>
                   <td valign="middle"class="span5">
-                    <a href='#'><h5>{{livro.titulo}}</h5></a>
+                    <a href='#/listar/livro/{{livro.titulo}}'><h5>{{livro.titulo}}</h5></a>
 
                   </td>
                   <td class="span2"><h5>{{livro.preco | currency:"R$"}}</h5></td>

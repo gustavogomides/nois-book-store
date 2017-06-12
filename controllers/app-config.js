@@ -51,6 +51,10 @@
 			templateUrl: '././views/sobrenos.html',
 			controller: 'LivroController as LivroController'
 		});
+		$routeProvider.when('/autor/:autor', {
+			templateUrl: '././views/autor-livros.html',
+			controller: 'AutorController as AutorController'
+		});
 	}
 
 })();

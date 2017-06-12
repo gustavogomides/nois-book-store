@@ -1,0 +1,33 @@
+<div ng-controller="MainController">
+    <navbarheader></navbarheader>
+</div>
+            
+<div class="row-fluid" ng-controller="AutorController">
+    <div ng-if="livrosAutor.length > 1">
+        <h5 style="text-align: center" ng-bind-html="quantidadeLivrosAutor">
+            {{quantidadeLivrosAutor}}
+        </h5>
+        <ul class="thumbnails">
+        <li style="width:100%;" ng-repeat="livro in livrosAutor">
+        <li style="width:100%;" ng-repeat="livro in livrosAutor">
+            <div class="thumbnail">
+            <div style="text-align: center;">
+                <a href="#/listar/livro/{{livro.titulo}}">
+                    <img height="150" width="75" src="img/capas/{{livro.isbn}}.jpeg"
+                    alt="Capa do Livro Titulo">
+                </a>
+            </div>
+            <div class="caption">   
+                <h5>
+                <a href="#/listar/livro/{{livro.titulo}}">{{livro.titulo}}</a>
+                </h5>
+                <p ng-bind-html="livro.descricao"><b>Descrição: </b>{{livro.descricao}}</p>
+                <p>
+                <a href="#/listar/livro/{{livro.titulo}}" class="btn btn-info">Ver Detalhes</a>
+                </p>
+            </div>
+            </div>
+        </li>
+    </ul>
+  </div>
+</div>

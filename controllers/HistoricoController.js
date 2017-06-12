@@ -15,7 +15,7 @@
 
         MainService.getHistorico($routeParams.custID, function(response){
 			response = response.historico;
-			console.log(response);
+			
 			response.forEach(function(data){
 				historicoArray.push({
 					isbn: data.isbn,

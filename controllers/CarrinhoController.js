@@ -43,7 +43,7 @@
 		// FUNÇÃO UTILIZADA PARA ATUALIZAR A QUANTIDADE DE UM DETERMINADO LIVRO
 		// E RECUPERAR AS INFORMAÇÕES DO LIVRO
 		function atualizaQuantidade(isbn, add){
-			if($routeParams.isbn.split("add")[1] == -1){
+			if($routeParams.isbn.split("add")[1] == -1 && isbn == null){
 				getCarrinho();
 			}else{
 				var existe = false;

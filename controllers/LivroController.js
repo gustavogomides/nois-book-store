@@ -35,6 +35,19 @@
 
 		function getLivroSuccessCallback(data) {
 			$scope.livro = data;
+			MainService.getAutores(data.ISBN, function(result){
+				var array = [];
+				var cont = 0;
+				result.autores.forEach(function(data){
+					cont++;
+					if(cont == result.autores.length){
+						array.push(data.nameF + " " + data.nameL);
+						$scope.livro.autor = array;
+					}else{
+						array.push(data.nameF + " " + data.nameL);
+					}
+				});
+			});
 		}
 
 		function getLivroErrorCallback() {

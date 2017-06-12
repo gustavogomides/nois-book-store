@@ -46,6 +46,10 @@
                                   <dt>Data Publicação:</dt> <dd>{{livro.pubdate}}</dd>
                                   <dt>Edição:</dt> <dd>{{livro.edition}}</dd>
                                   <dt>Páginas:</dt> <dd>{{livro.pages}}</dd>
+                                  <dt>Autor:</dt>
+                                    <dd ng-repeat="autor in livro.autor">
+                                        <a href="#/autor/{{autor}}">{{autor}}</a>
+                                    </dd>
                                 </dl>
                             </p>
                             
