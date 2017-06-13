@@ -47,8 +47,8 @@
 			templateUrl: '././views/historico.html',
 			controller: 'HistoricoController as HistoricoController'
 		});
-		$routeProvider.when('/sobrenos', {
-			templateUrl: '././views/sobrenos.html',
+		$routeProvider.when('/sobresite', {
+			templateUrl: '././views/sobreSite.html',
 			controller: 'LivroController as LivroController'
 		});
 		$routeProvider.when('/autor/:autor', {
