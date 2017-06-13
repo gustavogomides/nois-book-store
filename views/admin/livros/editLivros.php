@@ -39,7 +39,7 @@
 
                                 <div class="form-group">
                                     <label>ISBN</label>
-                                    <input type="text" class="form-control" ng-model="livro.ISBN" disabled required maxlength="15" pattern="[0-9]{5,15}" placeholder="ISBN do Livro">
+                                    <input type="text" class="form-control" ng-model="livro.ISBN" disabled required maxlength="15" placeholder="ISBN do Livro">
                                 </div>
 
                                 <div class="form-group">

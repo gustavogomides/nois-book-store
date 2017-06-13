@@ -38,12 +38,12 @@
 
                                 <div class="form-group">
                                     <label>Nome</label>
-                                    <input type="text" ng-model="autor.nameF" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2,20}" placeholder="Informe o Nome">
+                                    <input type="text" ng-model="autor.nameF" class="form-control" required maxlength="20" placeholder="Informe o Nome">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Sobrenome</label>
-                                    <input type="text" ng-model="autor.nameL" class="form-control" required maxlength="20" pattern="[A-Za-z'-]{2,20}" placeholder="Informe o Sobrenome">
+                                    <input type="text" ng-model="autor.nameL" class="form-control" required maxlength="20" placeholder="Informe o Sobrenome">
                                 </div>
 
                                 <button type="submit" class="btn btn-success btn-lg">Editar Autor</button>

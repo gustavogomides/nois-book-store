@@ -20,7 +20,7 @@
             MainService.getLivrosAutor($routeParams.autor, function(response){
                 $scope.autor = $routeParams.autor;
                 $scope.quantidadeLivrosAutor = response.length;
-                console.log(response);
+                
                 if($scope.quantidadeLivrosAutor == 1){
                     $scope.quantidadeLivrosAutor += ' livro encontrado do autor <b>'+$routeParams.autor+'</b>';
                 }else if($scope.quantidadeLivrosAutor > 1) {
